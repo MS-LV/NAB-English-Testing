@@ -1,0 +1,35 @@
+.main__container {
+  > * + *:not(.submit) {
+    padding: 0;
+  }
+  > .card > *:not(.submit) {
+    margin: 0;
+  }
+  > .card {
+    .card-header {
+      margin-bottom: 20px;
+    }
+    .card-text-field {
+      width: 50%;
+      @media (max-width: 768px) {
+        & {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  > *:first-child {
+    flex: 1 1 auto;
+  }
+  > *:last-child {
+    flex: 0 0 max-content;
+  }
+}
+
+

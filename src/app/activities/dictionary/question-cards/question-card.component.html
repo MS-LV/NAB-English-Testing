@@ -1,0 +1,43 @@
+<form [formGroup]="dictionaryForm" (ngSubmit)="onSubmit($event)" class="main__container">
+  <div class="main__img">
+    <img class="responsive-img" src="assets/images/dictionary-section.png" alt="">
+  </div>
+  <div class="testing__descriptions">
+    <h1 class="description__header">DICTIONARY - (part- 0) 101-150</h1>
+    <p class="bold">Hello dear test takers!</p>
+    <p style="white-space: nowrap">This is vocabulary test
+      <wbr>
+      part - 0.
+    </p>
+    <p>You have 50 vocabularies in Tajik and Russian. Please , type the English translation of all the
+      vocabularies. You also must write an English sentence for each vocabulary. Each true answer worth 1
+      point. </p>
+    <p class="bold good-luck">Good luck</p>
+    <div class="description__account collection">
+      <div class="collection-item">
+        <span class="account__url user-email overflow-ellipsis">jamoliddinqodirov18@gmail.com</span>
+        <div class="account__success-icon">
+          <i class="fa-solid fa-cloud"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-container formArrayName="cards">
+    <mat-card *ngFor="let card of questions; let idx = index" class="card">
+      <mat-card-header class="card-header">
+        <mat-card-title>{{idx + 1}}. {{card.tajik}} - {{card.russian}}</mat-card-title>
+        <small>1 ball</small>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-form-field class="card-text-field">
+          <input matInput [formControlName]="idx" placeholder="write you answer" type="text" required>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <div class="submit">
+    <button type="reset" mat-raised-button color="warn" [disabled]="!dictionaryForm.dirty">Clear</button>
+    <button class="submit-btn" mat-raised-button color="primary" [disabled]="dictionaryForm.invalid">Submit</button>
+  </div>
+</form>

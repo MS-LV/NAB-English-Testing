@@ -1,0 +1,107 @@
+:host {
+  display: block;
+  background: #E3F2FD;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0 0;
+}
+
+.card {
+  display: flex;
+  background: white;
+  width: 85%;
+  max-width: 700px;
+  min-height: 350px;
+  margin: 0 auto;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  overflow: hidden;
+}
+
+.card-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 30%;
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+}
+
+.card-items {
+  height: 100%;
+
+  > * {
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    color: white;
+    line-height: 24px;
+  }
+  .card-img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .card-role {
+    margin-bottom: 5px;
+  }
+}
+
+.card-background,
+.card-description {
+  padding: 1.50rem;
+}
+
+.card-description {
+  flex: 1 1 auto;
+  min-width: 70%;
+}
+.description-block {
+  width: 100%;
+}
+
+.description-header {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.description-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  margin: 10px 0 0;
+}
+
+.description-item {
+  flex: 0 1 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.item-header {
+  margin: 0 0 10px;
+  &.bold {
+    font-weight: bold;
+  }
+}
+
+.item-value {
+  font-family: Roboto-thin, sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+}
+
+

@@ -1,0 +1,56 @@
+<main class="main blue lighten-5">
+  <form *ngIf="!isAuthorized" [formGroup]="studentInfo" (ngSubmit)="studentInfoSubmit($event)" class="main__container">
+    <div class="main__img">
+      <img class="responsive-img" src="assets/images/dictionary-section.png" alt="">
+    </div>
+    <div class="testing__descriptions">
+      <h1 class="description__header">DICTIONARY - (part- 0) 101-150</h1>
+      <p class="bold">Hello dear test takers!</p>
+      <p style="white-space: nowrap">This is vocabulary test
+        <wbr>
+        part - 0.
+      </p>
+      <p>You have 50 vocabularies in Tajik and Russian. Please , type the English translation of all the
+        vocabularies. You also must write an English sentence for each vocabulary. Each true answer worth 1
+        point. </p>
+      <p class="bold good-luck">Good luck</p>
+      <div class="description__account collection">
+        <div class="collection-item">
+          <span class="account__url user-email overflow-ellipsis">jamoliddinqodirov18@gmail.com</span>
+          <div class="account__success-icon">
+            <i class="fa-solid fa-cloud"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testing-group">
+      <h5 class="card-title">Group</h5>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Group</mat-label>
+        <input matInput formControlName="group" id="group" placeholder="Enter your group" type="text"
+               autocomplete="off">
+        <!--        <mat-error *ngIf="dictionaryForm.get('group')?.errors?.required">This field is required.</mat-error>-->
+        <mat-error *ngIf="studentInfo.get('group')?.hasError('required')">This field is required.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="block">
+      <h1 class="card-title">Block</h1>
+      <mat-radio-group
+        formControlName="block"
+        value="lower"
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group">
+        <mat-radio-button class="example-radio-button" *ngFor="let block of blocks" [value]="block">
+          <b>{{block}}</b>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="submit">
+      <button type="reset" mat-raised-button color="warn" [disabled]="!studentInfo.dirty">Clear</button>
+      <button class="submit-btn" mat-raised-button color="primary" [disabled]="studentInfo.invalid">Submit</button>
+    </div>
+  </form>
+
+  <ng-container #questions>
+  </ng-container>
+</main>

@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+}
+
+.example-pizza-party {
+  color: white;
+}
+
+.example-pizza-party.error {
+  color: #e57373;
+}
+
+.example-pizza-party.success {
+  color: #81c784;
+}

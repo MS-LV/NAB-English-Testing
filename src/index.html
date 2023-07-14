@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NABEnglishTesting</title>
-  <base href="/">
+  <title>NAB English Testing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="./configs.js"></script>
 </head>
-<body>
-  <app-root></app-root>
+<body class="mat-typography">
+<app-root></app-root>
+
+<script>
+  window.upConfig = getConfig();
+</script>
 </body>
 </html>
