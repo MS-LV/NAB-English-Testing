@@ -13,13 +13,11 @@ jobs:
       - name: Клонирование кода
         uses: actions/checkout@v2
 
-      - name: Cache Node.js dependencies
+      - name: Кэширование node_modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # Используется package-lock.json для уникального ключа кэширования
       - name: Установка Node.js
         uses: actions/setup-node@v2
         with:
