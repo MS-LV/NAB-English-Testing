@@ -6,25 +6,48 @@ on:
       - master  # Измените на нужную вам ветку, из которой хотите запускать рабочий процесс
 
 jobs:
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Repository code
+        uses: actions/checkout@v3
+
+      - name: Cache deps
+        uses: actions/cache@3
+        with:
+          path: ~/.npm
+          key: node-modules-${{hashFiles('**/package-lock.json')}}
+
+      - name: Install deps
+        run: npm ci
+
+      - name: testing app
+        run: npm run test
+
+
   build_and_deploy:
     runs-on: ubuntu-latest
+    needs: [test]
 
     steps:
       - name: Клонирование кода
         uses: actions/checkout@v2
 
-      - name: Кэширование node_modules
-        uses: actions/cache@v2
-        with:
-          path: ./node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # Используется package-lock.json для уникального ключа кэширования
       - name: Установка Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'  # Измените на нужную версию Node.js
 
+      - name: Cache deps
+        uses: actions/cache@3
+        with:
+          path: ~/.npm
+          key: node-modules-${{hashFiles('**/package-lock.json')}}
+
       - name: Установка зависимостей
-        run: npm install
+        run: npm ci
 
       - name: Сборка Angular-приложения
         run: npm run build
