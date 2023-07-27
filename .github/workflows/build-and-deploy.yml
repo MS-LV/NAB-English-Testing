@@ -16,7 +16,7 @@ jobs:
       - name: Кэширование node_modules
         uses: actions/cache@v2
         with:
-          path: node_modules
+          path: ./node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # Используется package-lock.json для уникального ключа кэширования
       - name: Установка Node.js
         uses: actions/setup-node@v2
@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Сборка Angular-приложения
-        run: ng build
+        run: npm run build
 
       - name: Создание ветки production-build
         run: |
