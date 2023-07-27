@@ -12,10 +12,10 @@
     <p>You have 50 vocabularies in Tajik and Russian. Please , type the English translation of all the
       vocabularies. You also must write an English sentence for each vocabulary. Each true answer worth 1
       point. </p>
-    <p class="bold good-luck">Good luck</p>
+    <p class="bold copy-right">Good luck</p>
     <div class="description__account collection">
       <div class="collection-item">
-        <span class="account__url user-email overflow-ellipsis">jamoliddinqodirov18@gmail.com</span>
+        <span class="account__url user-email overflow-ellipsis">{{config.userInfo?.email}}</span>
         <div class="account__success-icon">
           <i class="fa-solid fa-cloud"></i>
         </div>
@@ -23,10 +23,12 @@
     </div>
   </div>
   <ng-container formArrayName="cards">
-    <mat-card *ngFor="let card of questions; let idx = index" class="card">
+    <mat-card *ngFor="let card of questions; let idx = index" class="card" [ngClass]="{
+    correct: isChecked && card.english.toLowerCase() === getCardValue(idx),
+    incorrect: isChecked && card.english.toLowerCase() !== getCardValue(idx)
+    }">
       <mat-card-header class="card-header">
-        <mat-card-title>{{idx + 1}}. {{card.tajik}} - {{card.russian}}</mat-card-title>
-        <small>1 ball</small>
+        <mat-card-title>{{idx + 1}}. {{card?.tajik}} - {{card?.russian}}</mat-card-title>
       </mat-card-header>
 
       <mat-card-content>

@@ -1,3 +1,9 @@
+:host {
+  position: relative;
+  top: 0;
+  height: 100%;
+  display: block;
+}
 .toolbar-wrapper {
   display: flex;
   justify-content: space-between;
@@ -69,4 +75,16 @@ mat-sidenav-content {
 
 mat-sidenav-content {
   padding: 0;
+}
+
+.toolbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+mat-sidenav-container {
+  top: 56px;
 }

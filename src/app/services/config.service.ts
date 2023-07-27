@@ -1,7 +1,8 @@
-import {ConfigsInterface} from "../interface/configs";
+import {ConfigsInterface, UserInfo} from "../interface/configs";
 
 export class ConfigService {
-  upConfig?: ConfigsInterface;
+  upConfig!: ConfigsInterface;
+  private _private: UserInfo;
 
   constructor() {
     this.init();
@@ -10,6 +11,14 @@ export class ConfigService {
   init() {
     // @ts-ignore
     this.upConfig = window.upConfig;
+  }
+
+  get userInfo(): UserInfo {
+    return JSON.parse(localStorage.getItem('userInfo') as any);
+  }
+
+  get accessToken(): string {
+    return JSON.parse(localStorage.getItem('accessToken') as any);
   }
 
   get deviceType() {

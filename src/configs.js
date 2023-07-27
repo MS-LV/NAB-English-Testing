@@ -1,5 +1,8 @@
 const configs = {
-  serverURL: 'http://192.168.88.24:5000',
+  serverURL: 'http://localhost:5000',
+  get testing() {
+    return `${this.serverURL}/testing`
+  },
   get auth() {
     return `${this.serverURL}/auth`;
   },
@@ -15,11 +18,31 @@ const configs = {
   get isAuthorized() {
     return `${this.auth}/authorized`
   },
-  get dictionary() {
+  get everyday() {
     return `${this.serverURL}/question/dictionary`;
   },
-  get testing() {
-    return `${this.serverURL}/question/testing`;
+  get history() {
+    return `${this.serverURL}/history`;
+  },
+
+  get dictionary() {
+    return `${this.testing}/dictionary`;
+  },
+
+  get grammar() {
+    return `${this.testing}/grammar`;
+  },
+
+  get reading() {
+    return `${this.testing}/reading`;
+  },
+
+  get listening() {
+    return `${this.testing}/listening`;
+  },
+
+  get writing() {
+    return `${this.testing}/writing`;
   }
 };
 

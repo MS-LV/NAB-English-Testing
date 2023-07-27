@@ -23,10 +23,21 @@
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Password</mat-label>
         <input matInput formControlName="password" placeholder="Enter your password" autocomplete="off" type="password">
-        <mat-error *ngIf="registrationForm.get('password')?.hasError('required')">Password is required.</mat-error>
-        <mat-error *ngIf="registrationForm.get('password')?.hasError('minlength')">Minlength {{ passwordLength }} characters.</mat-error>
+        <mat-error *ngIf="registrationForm?.get('password')?.hasError('required')">Password is required.</mat-error>
+        <mat-error *ngIf="registrationForm?.get('password')?.hasError('minlength')">Minlength {{ passwordLength }} characters.</mat-error>
       </mat-form-field>
 
+      <div class="switch-area">
+        <div>Is your instructor ?</div>
+        <mat-slide-toggle [(ngModel)]="isTeacher" [ngModelOptions]="{standalone: true}"></mat-slide-toggle>
+      </div>
+
+      <mat-form-field *ngIf="isTeacher" class="example-full-width" appearance="fill">
+        <mat-label>Access key</mat-label>
+        <input matInput formControlName="accessKey" placeholder="Enter access key" autocomplete="off" type="password">
+        <mat-error *ngIf="registrationForm?.get('password')?.hasError('required')">Password is required.</mat-error>
+        <mat-error *ngIf="registrationForm?.get('password')?.hasError('minlength')">Minlength {{ passwordLength }} characters.</mat-error>
+      </mat-form-field>
       <div class="submit">
         <button type="reset" mat-raised-button color="warn" [disabled]="!registrationForm.dirty">Clear</button>
         <button class="submit-btn" mat-raised-button color="primary" [disabled]="registrationForm.invalid">Submit</button>
@@ -39,17 +50,17 @@
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" placeholder="Enter your email">
-        <mat-error *ngIf="logInForm.get('email')?.hasError('required')">Email is required.</mat-error>
-        <mat-error *ngIf="logInForm.get('email')?.hasError('email')">Invalid email format.</mat-error>
+        <mat-error *ngIf="logInForm?.get('email')?.hasError('required')">Email is required.</mat-error>
+        <mat-error *ngIf="logInForm?.get('email')?.hasError('email')">Invalid email format.</mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Password</mat-label>
         <input matInput formControlName="password" placeholder="Enter your password" autocomplete="off" type="password">
-        <mat-error *ngIf="logInForm.get('password')?.hasError('required')">Password is required.</mat-error>
+        <mat-error *ngIf="logInForm?.get('password')?.hasError('required')">Password is required.</mat-error>
       </mat-form-field>
       <div class="submit">
-        <button type="reset" mat-raised-button color="warn" [disabled]="!logInForm.dirty">Clear</button>
-        <button class="submit-btn" mat-raised-button color="primary" [disabled]="logInForm.invalid">Submit</button>
+        <button type="reset" mat-raised-button color="warn" [disabled]="!logInForm?.dirty">Clear</button>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="logInForm?.invalid">Submit</button>
       </div>
     </form>
   </mat-tab>

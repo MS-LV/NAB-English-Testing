@@ -1,4 +1,4 @@
-import {Component, Inject, inject, Input} from '@angular/core';
+import {Component, Inject, inject} from '@angular/core';
 import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from "@angular/material/snack-bar";
 
 @Component({

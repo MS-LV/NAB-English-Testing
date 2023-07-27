@@ -26,6 +26,7 @@ export class LoginService {
         map((response: HttpResponse<AuthorizationData>) => {
           const localeStorage = this.helper.authDataCompress(response);
           this.helper.saveLocalStorage(localeStorage);
+          this.helper.setAuthStatus(true);
           const message = {
             statusCode: 200,
             message: 'Успешной регистрации!',
@@ -67,7 +68,6 @@ export class LoginService {
             message: error.error.message,
             status: 'error'
           }
-          this.helper.setAuthStatus(false);
           return of(message);
         })
       )

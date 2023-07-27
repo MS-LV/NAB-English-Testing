@@ -4,6 +4,12 @@ import {AuthorizationData} from "../interface/registration";
 import {BehaviorSubject, catchError, map, Observable, of, take} from "rxjs";
 import {ConfigService} from "./config.service";
 import {Router} from "@angular/router";
+import {DictionaryChecker} from "../interface/dictionaries-question";
+import {GrammarQS} from "../interface/testing";
+import {GrammarChecker} from "../components/grammar/grammar.interface";
+import {ReadingChecker} from "../components/reading/reading.interface";
+import {ListeningChecker} from "../components/listening/listening.interface";
+import {WritingChecker} from "../components/writing/writing.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +43,6 @@ export class HelperService {
       userInfo: {
         ...responseBody.user,
         userLevel: responseBody.status.level,
-        userRole: responseBody.status.role
       }
     }
     return localStorageData;
@@ -64,5 +69,23 @@ export class HelperService {
           return of(false);
         })
       )
+  }
+
+  checkerDictionary(questions: any[], answer: any[], type?: string): DictionaryChecker {
+    const correct = questions.filter((item, i) => item.english.toLowerCase() === answer[i]);
+    const incorrect = questions.filter((item, i) => item.english.toLowerCase() !== answer[i]);
+    const result = {correct, incorrect, type};
+    return result;
+  }
+
+  checkerGrammar(questions: GrammarQS[], answer: string[], type: string): GrammarChecker | ReadingChecker | ListeningChecker | DictionaryChecker | WritingChecker {
+    const correct = questions.filter((item, i) => item.answer.toLowerCase().trim() === answer[i].toLowerCase().trim());
+    const incorrect = questions.filter((item, i) => item.answer.toLowerCase().trim() !== answer[i].toLowerCase().trim());
+    const result = {correct, incorrect, type};
+    return result;
+  }
+
+  shuffleArray<T>(array: T[]): T[] {
+    return array.sort(() => Math.random() - 0.5);
   }
 }

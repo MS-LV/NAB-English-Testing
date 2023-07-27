@@ -7,3 +7,11 @@ export interface DictionariesQuestion {
   russian: string;
   tajik: string;
 }
+
+export interface DictionaryChecker {
+  group?: string;
+  block?: string;
+  correct: DictionariesQuestion[];
+  incorrect: DictionariesQuestion[];
+  type?: string;
+}

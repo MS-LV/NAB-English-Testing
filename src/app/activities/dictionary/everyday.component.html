@@ -13,10 +13,10 @@
       <p>You have 50 vocabularies in Tajik and Russian. Please , type the English translation of all the
         vocabularies. You also must write an English sentence for each vocabulary. Each true answer worth 1
         point. </p>
-      <p class="bold good-luck">Good luck</p>
+      <p class="bold copy-right">Good luck</p>
       <div class="description__account collection">
         <div class="collection-item">
-          <span class="account__url user-email overflow-ellipsis">jamoliddinqodirov18@gmail.com</span>
+          <span class="account__url user-email overflow-ellipsis">{{config?.userInfo?.email}}</span>
           <div class="account__success-icon">
             <i class="fa-solid fa-cloud"></i>
           </div>
@@ -46,8 +46,8 @@
       </mat-radio-group>
     </div>
     <div class="submit">
-      <button type="reset" mat-raised-button color="warn" [disabled]="!studentInfo.dirty">Clear</button>
-      <button class="submit-btn" mat-raised-button color="primary" [disabled]="studentInfo.invalid">Submit</button>
+      <button type="reset" mat-raised-button color="warn" [disabled]="!studentInfo?.dirty">Clear</button>
+      <button class="submit-btn" mat-raised-button color="primary" [disabled]="studentInfo?.invalid">Submit</button>
     </div>
   </form>
 

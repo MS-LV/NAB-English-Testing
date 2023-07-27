@@ -3,15 +3,16 @@ import {RouterModule, Routes} from '@angular/router';
 import {AboutComponent} from "./activities/about/about.component";
 import {ProfileComponent} from "./activities/profile/profile.component";
 import {LoginComponent} from "./activities/login/login.component";
-import {DictionaryComponent} from "./activities/dictionary/dictionary.component";
+import {EverydayComponent} from "./activities/dictionary/everyday.component";
 import {TestingComponent} from "./activities/testing/testing.component";
 import {HistoryComponent} from "./activities/history/history.component";
 import {ErrorComponent} from "./activities/error/error.component";
 import {AuthGuard} from "./guard/auth.guard";
 
 const routes: Routes = [
+  {path: '', redirectTo: '/dictionary', pathMatch: 'full'},
   {path: 'testing', component: TestingComponent, canActivate: [AuthGuard]},
-  {path: 'dictionary', component: DictionaryComponent},
+  {path: 'dictionary', component: EverydayComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'login', component: LoginComponent},

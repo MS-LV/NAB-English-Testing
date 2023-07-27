@@ -32,4 +32,6 @@
   }
 }
 
-
+::ng-deep mat-dialog-actions.mat-mdc-dialog-actions.actions {
+    justify-content: space-between;
+}

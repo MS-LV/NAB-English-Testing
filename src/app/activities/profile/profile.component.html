@@ -5,8 +5,8 @@
         <div class="card-img">
           <img src="../../../assets/images/user-profile.png" alt="user">
         </div>
-        <div class="card-role">STUDENT</div>
-        <div class="card-name">Jamoliddin Qodirov</div>
+        <div class="card-role">{{config?.userInfo?.role | titlecase}}</div>
+        <div class="card-name">{{config?.userInfo?.name | titlecase}} {{config?.userInfo?.surename | titlecase}}</div>
       </div>
     </div>
     <div class="card-description">
@@ -15,11 +15,11 @@
         <div class="description-content">
           <div class="description-item">
             <h4 class="item-header bold">Email</h4>
-            <div class="item-value">jamoliddinqodirov18@gmail.com</div>
+            <div class="item-value">{{config?.userInfo?.email}}</div>
           </div>
           <div class="description-item">
-            <h4 class="item-header bold">Phone</h4>
-            <div class="item-value">+992917905525</div>
+            <h4 class="item-header bold">Level</h4>
+            <div class="item-value capitalize">{{config?.userInfo?.userLevel | titlecase}}</div>
           </div>
         </div>
       </div>

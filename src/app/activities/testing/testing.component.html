@@ -1,1 +1,68 @@
-<p>testing works!</p>
+<div [ngSwitch]="page" class="main">
+  <div *ngSwitchCase="'grammar'">
+    <app-grammar (onSubmit)="onSubmitCards($event)"></app-grammar>
+  </div>
+  <div *ngSwitchCase="'reading'">
+    <app-reading (onSubmit)="onSubmitCards($event)"></app-reading>
+  </div>
+  <div *ngSwitchCase="'listening'">
+    <app-listening (onSubmit)="onSubmitCards($event)"></app-listening>
+  </div>
+  <div *ngSwitchCase="'dictionary'">
+    <app-dictionary (onSubmit)="onSubmitCards($event)"></app-dictionary>
+  </div>
+  <div *ngSwitchCase="'writing'">
+    <app-writing (onSubmit)="onSubmitCards($event)"></app-writing>
+  </div>
+  <div *ngSwitchCase="'speaking'">
+    <app-speaking (onSubmit)="onSubmitCards($event)"></app-speaking>
+  </div>
+  <div *ngSwitchDefault class="main">
+    <form [formGroup]="testingInfo" (ngSubmit)="startTestingSubmit()"
+          class="main__container">
+      <div class="main__img">
+        <img class="responsive-img" src="assets/images/english-level-{{config?.userInfo?.userLevel}}.png" alt="">
+      </div>
+      <div class="testing__descriptions">
+        <h1 class="description__header">English {{config?.userInfo?.userLevel | titlecase}} Test - Version - A
+          (NAB)</h1>
+        <p class="bold">Hello dear <br> test takers!</p>
+        <p>This is standardized test of English language for Beginner level. <wbr>
+          We test your English language knowledge based on 6 sections:</p>
+        <ul>
+          <li *ngFor="let step of testSteps" class="bold">
+            {{step}}
+          </li>
+        </ul>
+        <p>We kindly ask you to fill the entire test, <wbr> answer all questions and be attentive during the test.</p>
+        <p class="bold copy-right">&copy; NAB - {{date | date:'yyyy'}}</p>
+      </div>
+      <div class="testing-group">
+        <h5 class="card-title">Group</h5>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Group</mat-label>
+          <input matInput formControlName="group" id="group" placeholder="Enter your group" type="text"
+                 autocomplete="off">
+          <!--        <mat-error *ngIf="dictionaryForm.get('group')?.errors?.required">This field is required.</mat-error>-->
+          <mat-error *ngIf="testingInfo.get('group')?.hasError('required')">This field is required.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="block">
+        <h1 class="card-title">Block</h1>
+        <mat-radio-group
+          formControlName="block"
+          value="lower"
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group">
+          <mat-radio-button class="example-radio-button" *ngFor="let block of blocks" [value]="block">
+            <b>{{block}}</b>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="submit">
+        <button type="reset" mat-raised-button color="warn" [disabled]="!testingInfo?.dirty">Clear</button>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="testingInfo?.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
