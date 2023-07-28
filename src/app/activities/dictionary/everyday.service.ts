@@ -34,7 +34,7 @@ export class EverydayService {
 
   saveToHistory(body: DictionaryChecker, headers: HttpHeaders): Observable<any> {
     body = {...body, group: this.testInfo.group, block: this.testInfo.block}
-    return this.http.post(this.config.upConfig!.dictionary, body, {headers})
+    return this.http.post(this.config.upConfig!.everyday, body, {headers})
       .pipe(take(1));
   }
 }

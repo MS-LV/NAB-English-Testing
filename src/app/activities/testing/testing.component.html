@@ -21,10 +21,10 @@
     <form [formGroup]="testingInfo" (ngSubmit)="startTestingSubmit()"
           class="main__container">
       <div class="main__img">
-        <img class="responsive-img" src="assets/images/english-level-{{config?.userInfo?.userLevel}}.png" alt="">
+        <img class="responsive-img" src="assets/images/english-level-{{config.userInfo.userLevel}}.png" alt="">
       </div>
       <div class="testing__descriptions">
-        <h1 class="description__header">English {{config?.userInfo?.userLevel | titlecase}} Test - Version - A
+        <h1 class="description__header">English {{config.userInfo.userLevel | titlecase}} Test - Version - A
           (NAB)</h1>
         <p class="bold">Hello dear <br> test takers!</p>
         <p>This is standardized test of English language for Beginner level. <wbr>
@@ -44,7 +44,7 @@
           <input matInput formControlName="group" id="group" placeholder="Enter your group" type="text"
                  autocomplete="off">
           <!--        <mat-error *ngIf="dictionaryForm.get('group')?.errors?.required">This field is required.</mat-error>-->
-          <mat-error *ngIf="testingInfo.get('group')?.hasError('required')">This field is required.</mat-error>
+          <mat-error *ngIf="testingInfo.get('group')!.hasError('required')">This field is required.</mat-error>
         </mat-form-field>
       </div>
       <div class="block">
@@ -60,8 +60,8 @@
         </mat-radio-group>
       </div>
       <div class="submit">
-        <button type="reset" mat-raised-button color="warn" [disabled]="!testingInfo?.dirty">Clear</button>
-        <button class="submit-btn" mat-raised-button color="primary" [disabled]="testingInfo?.invalid">Submit</button>
+        <button type="reset" mat-raised-button color="warn" [disabled]="!testingInfo.dirty">Clear</button>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="testingInfo.invalid">Submit</button>
       </div>
     </form>
   </div>

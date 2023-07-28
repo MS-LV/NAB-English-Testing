@@ -16,7 +16,7 @@
       <p class="bold copy-right">Good luck</p>
       <div class="description__account collection">
         <div class="collection-item">
-          <span class="account__url user-email overflow-ellipsis">{{config?.userInfo?.email}}</span>
+          <span class="account__url user-email overflow-ellipsis">{{config.userInfo.email}}</span>
           <div class="account__success-icon">
             <i class="fa-solid fa-cloud"></i>
           </div>
@@ -30,7 +30,7 @@
         <input matInput formControlName="group" id="group" placeholder="Enter your group" type="text"
                autocomplete="off">
         <!--        <mat-error *ngIf="dictionaryForm.get('group')?.errors?.required">This field is required.</mat-error>-->
-        <mat-error *ngIf="studentInfo.get('group')?.hasError('required')">This field is required.</mat-error>
+        <mat-error *ngIf="studentInfo.get('group')!.hasError('required')">This field is required.</mat-error>
       </mat-form-field>
     </div>
     <div class="block">
@@ -46,8 +46,8 @@
       </mat-radio-group>
     </div>
     <div class="submit">
-      <button type="reset" mat-raised-button color="warn" [disabled]="!studentInfo?.dirty">Clear</button>
-      <button class="submit-btn" mat-raised-button color="primary" [disabled]="studentInfo?.invalid">Submit</button>
+      <button type="reset" mat-raised-button color="warn" [disabled]="!studentInfo.dirty">Clear</button>
+      <button class="submit-btn" mat-raised-button color="primary" [disabled]="studentInfo.invalid">Submit</button>
     </div>
   </form>
 

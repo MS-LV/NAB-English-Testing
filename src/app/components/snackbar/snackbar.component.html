@@ -1,6 +1,6 @@
 <span class="example-pizza-party"
       [ngClass]="{error: data.status === 'error', success: data.status === 'success'}" matSnackBarLabel>
-  {{data?.message}}
+  {{data.message}}
 </span>
 <span matSnackBarActions>
   <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">🍕 </button>

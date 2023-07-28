@@ -15,7 +15,7 @@
     <p class="bold copy-right">Good luck</p>
     <div class="description__account collection">
       <div class="collection-item">
-        <span class="account__url user-email overflow-ellipsis">{{config.userInfo?.email}}</span>
+        <span class="account__url user-email overflow-ellipsis">{{config.userInfo.email}}</span>
         <div class="account__success-icon">
           <i class="fa-solid fa-cloud"></i>
         </div>
@@ -28,7 +28,7 @@
     incorrect: isChecked && card.english.toLowerCase() !== getCardValue(idx)
     }">
       <mat-card-header class="card-header">
-        <mat-card-title>{{idx + 1}}. {{card?.tajik}} - {{card?.russian}}</mat-card-title>
+        <mat-card-title>{{idx + 1}}. {{card.tajik}} - {{card.russian}}</mat-card-title>
       </mat-card-header>
 
       <mat-card-content>

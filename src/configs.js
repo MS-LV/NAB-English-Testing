@@ -1,5 +1,5 @@
 const configs = {
-  serverURL: 'https://testing-anglish-dcd9dbbba372.herokuapp.com/',
+  serverURL: 'http://localhost:5000',
   get auth() {
     return `${this.serverURL}/auth`;
   },
@@ -15,11 +15,15 @@ const configs = {
   get isAuthorized() {
     return `${this.auth}/authorized`
   },
-  get dictionary() {
+  get everyday() {
     return `${this.serverURL}/question/dictionary`;
   },
   get testing() {
     return `${this.serverURL}/question/testing`;
+  },
+
+  get history() {
+    return `${this.serverURL}/history`
   }
 };
 
