@@ -1,50 +1,32 @@
-name: Сборка и развёртывание на Production
+name: Build and deploy
 
 on:
   push:
-    branches:
-      - master  # Измените на нужную вам ветку, из которой хотите запускать рабочий процесс
+    branches: [ "master" ]
 
 jobs:
+  build:
 
-
-  build_and_deploy:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
-      - name: Клонирование кода
-        uses: actions/checkout@v2
-
-      - name: Установка Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: '18.x'  # Измените на нужную версию Node.js
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
 
-      - name: Cache deps
-        id: node-modules
-        uses: actions/cache@v3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ~/.npm
-          key: node-modules-${{hashFiles('**/package-lock.json')}}
-
-      - name: Установка зависимостей
-        run: npm ci
-
-      - name: Сборка Angular-приложения
-        run: npm run build
-
-      - name: Создание ветки production-build
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git checkout -b production-build
-          git add .
-          git commit -m "Production build from GitHub Actions"
-          git push origin production-build
-
-      - name: Развёртывание на ветке production-build
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: production-build
-          publish_dir: ./dist/nab-english-testing  # Измените на директорию сборки вашего Angular-проекта
+          # branch: gh-pages # by default
+          ssh-key: ${{ secrets.DEPLOY_KEY_SECRET }}
+          folder: dist/nab-english-testing
