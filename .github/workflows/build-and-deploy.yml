@@ -28,5 +28,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           # branch: gh-pages # by default
+          branch: production-build
           ssh-key: ${{ secrets.DEPLOY_KEY_SECRET }}
-          folder: dist/nab-english-testing
+          folder: dist/
