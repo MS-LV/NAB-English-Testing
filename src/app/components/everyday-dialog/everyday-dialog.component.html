@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Test Results</h2>
+<mat-dialog-content>
+  <p>Correct Answers: {{ data.correct.length }}</p>
+  <p>Incorrect Answers: {{ data.incorrect.length }}</p>
+  <p>score: {{score}}</p>
+</mat-dialog-content>
+<mat-dialog-actions class="actions" align="end">
+  <button mat-button color="primary" (click)="reloadPage()">restart</button>
+  <button mat-button [mat-dialog-close] color="primary">Close</button>
+</mat-dialog-actions>

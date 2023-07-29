@@ -19,7 +19,7 @@ export class TestingComponent {
   private idxCard = 0;
 
   constructor(public config: ConfigService,
-              private service: TestingService) {
+              public service: TestingService) {
     this.testingInfo = new FormGroup({
       group: new FormControl('web', [Validators.required]),
       block: new FormControl('A', [Validators.required])

@@ -1,0 +1,63 @@
+<form [formGroup]="questionForm" (ngSubmit)="questionSubmit($event)"
+      class="main__container">
+  <div class="main__img">
+    <img class="responsive-img" src="assets/images/english-level-{{config.userInfo.userLevel}}.png" alt="">
+  </div>
+  <div class="testing__descriptions">
+    <h1 class="description__header">English {{config.userInfo.userLevel | titlecase}} Test - Version - A
+      (NAB)</h1>
+  </div>
+  <div class="question-card">
+    <div class="card-header">Dictionary section</div>
+    <div class="card-description">Choose one correct option for each question.</div>
+  </div>
+
+  <div class="card__img">
+    <img src="assets/images/grammar-section.png">
+  </div>
+
+  <ng-container formArrayName="questions">
+    <div *ngFor="let question of currentCard; let idx = index"
+    [ngClass]="{
+    correct: false,
+    incorrect: false
+    }">
+      <h3>{{ question.description }}</h3>
+      <mat-radio-group [formControlName]="idx">
+        <mat-radio-button
+          *ngFor="let variant of question.options"
+          [value]="variant">
+          {{ variant }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+<!--      <div *ngFor="let question of (questionArray.controls as Array)">-->
+<!--        <h3>{{ question?.answer }}</h3>-->
+<!--        <mat-radio-group [formControl]="questionForm.get(`questions.${i}`)">-->
+<!--          <mat-radio-button-->
+<!--            *ngFor="let variant of question.variants"-->
+<!--            [value]="variant">-->
+<!--            {{ variant }}-->
+<!--          </mat-radio-button>-->
+<!--        </mat-radio-group>-->
+<!--      </div>-->
+<!--    <mat-card *ngFor="let card of questions; let idx = index" class="card" [ngClass]="{-->
+<!--    correct: false,-->
+<!--    incorrect: false-->
+<!--    }">-->
+<!--      <mat-card-header class="card-header">-->
+<!--        <mat-card-title>{{idx + 1}}. {{card?.tajik}} - {{card?.russian}}</mat-card-title>-->
+<!--        <small>1 ball</small>-->
+<!--      </mat-card-header>-->
+<!--      <mat-card-content>-->
+<!--        <mat-form-field class="card-text-field">-->
+<!--          <input matInput [formControlName]="idx" placeholder="write you answer" type="text" required>-->
+<!--        </mat-form-field>-->
+<!--      </mat-card-content>-->
+<!--    </mat-card>-->
+  </ng-container>
+  <div class="submit">
+    <button type="reset" mat-raised-button color="warn" [disabled]="!questionForm.dirty">Clear</button>
+    <button class="submit-btn" mat-raised-button color="primary" [disabled]="questionForm.invalid">Submit</button>
+  </div>
+</form>

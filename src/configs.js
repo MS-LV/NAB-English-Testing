@@ -19,7 +19,7 @@ const configs = {
     return `${this.serverURL}/question/dictionary`;
   },
   get testing() {
-    return `${this.serverURL}/question/testing`;
+    return `${this.serverURL}/testing`;
   },
 
   get history() {

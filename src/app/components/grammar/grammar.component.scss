@@ -1,0 +1,25 @@
+:host {
+  form.main__container {
+    .question-card {
+      padding: 0;
+
+      & > * {
+        margin: 0;
+        padding: 20px;
+      }
+
+      & .card-header {
+        background-color: #1e88e5 ;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+    > .card__img {
+      img {
+        display: block;
+        width: 95%;
+        margin: 5px auto;
+      }
+    }
+  }
+}

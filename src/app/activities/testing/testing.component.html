@@ -9,7 +9,7 @@
     <app-listening (onSubmit)="onSubmitCards($event)"></app-listening>
   </div>
   <div *ngSwitchCase="'dictionary'">
-    <app-dictionary (onSubmit)="onSubmitCards($event)"></app-dictionary>
+    <app-dictionary [questions]="service.currentCard" (onSubmit)="onSubmitCards($event)"></app-dictionary>
   </div>
   <div *ngSwitchCase="'writing'">
     <app-writing (onSubmit)="onSubmitCards($event)"></app-writing>
