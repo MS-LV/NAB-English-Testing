@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
       - name: Install deps & build
         working-directory: ./NAB-English-Testing
-        run: npm install
+        run: npm ci
 
       - name: Build
         working-directory: ./NAB-English-Testing
