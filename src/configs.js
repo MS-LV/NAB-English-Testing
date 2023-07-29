@@ -1,5 +1,6 @@
 const configs = {
   // serverURL: 'http://localhost:5000',
+
   serverURL: 'https://testing-anglish-dcd9dbbba372.herokuapp.com',
   get auth() {
     return `${this.serverURL}/auth`;
