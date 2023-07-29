@@ -21,13 +21,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - name: Install deps & build
-        working-directory: ./NAB-English-Testing
-        run: npm ci
-
-      - name: Build
-        working-directory: ./NAB-English-Testing
-        run: npm run build --if-present
+      - run: npm ci
+      - run: npm run build --if-present
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
@@ -35,4 +30,4 @@ jobs:
           # branch: gh-pages # by default
           branch: production-build
           ssh-key: ${{ secrets.DEPLOY_KEY_SECRET }}
-          folder: dist/
+          folder: dist/nab-english-testing
