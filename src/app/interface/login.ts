@@ -1,6 +1,7 @@
 export interface AuthorizationMessage {
-  statusCode:number;
+  statusCode: number;
   message: string;
+  errors?: string[];
 }
 
 export interface LoginControls {

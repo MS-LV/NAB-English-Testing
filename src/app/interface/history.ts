@@ -1,14 +1,15 @@
-import {DictionariesQuestion} from "./dictionaries-question";
+import {DictionaryChecker} from "./dictionaries-question";
 
 export interface HistoryResponse {
-  id: string;
+  _id: string;
   group: string;
   block: string;
-  correct: DictionariesQuestion[];
-  incorrect: DictionariesQuestion[];
-  user: string;
+  data: DictionaryChecker[];
+  user: {id: string; name: string; surename: string};
   type: string;
   score: number;
   createdAt: string;
   updatedAt: string;
 }
+
+

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DictionaryQS} from "../../interface/testing";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HelperService} from "../../services/helper.service";
@@ -13,29 +13,20 @@ import {timer} from "rxjs";
   templateUrl: './dictionary.component.html',
   styleUrls: ['./dictionary.component.scss', '../../components/styles/questions.scss']
 })
-export class DictionaryComponent {
+export class DictionaryComponent implements OnInit{
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
+  @Input() questions: DictionariesQuestion[] | any[]
   questionForm: FormGroup = new FormGroup({
     questions: new FormArray([])
   });
-
-  private _questions: DictionariesQuestion[] | any[];
 
   constructor(private service: DictionaryService,
               private helper: HelperService,
               public config: ConfigService,
               public testingService: TestingService) {
   }
-
-  @Input()
-  set questions(val: DictionariesQuestion[] | any) {
-    val.length = 5;
-    this._questions = val;
-    this.loadQuestions();
-  };
-
-  get questions(): DictionariesQuestion[] | any {
-    return this._questions;
+  ngOnInit() {
+    this.loadQuestions()
   }
 
   get questionArray(): FormArray {
@@ -44,12 +35,13 @@ export class DictionaryComponent {
 
   questionSubmit(event: Event) {
     const answer = this.questionForm.value.questions;
-    const checkAnswer = this.helper.checkerDictionary(this.questions, answer, 'grammar');
+    const checkAnswer = this.helper.checkerDictionary(this.questions, answer, 'dictionary');
     this.testingService.saveData.push(checkAnswer);
     this.onSubmit.emit('submit');
   }
 
   private loadQuestions() {
+    this.questions.length = 5
     const questions = this.service.formatArray(this.questions);
     for (let i = 0; i < questions.length; i++) {
       this.questionArray.push(new FormControl('', Validators.required));

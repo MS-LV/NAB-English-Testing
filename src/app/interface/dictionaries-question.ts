@@ -13,5 +13,7 @@ export interface DictionaryChecker {
   block?: string;
   correct: DictionariesQuestion[];
   incorrect: DictionariesQuestion[];
-  type?: string;
+  type: string;
+  essay?: string;
+  theme?: string;
 }

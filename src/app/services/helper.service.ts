@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {AuthorizationData} from "../interface/registration";
-import {BehaviorSubject, catchError, map, Observable, of, take} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable, of, take, tap} from "rxjs";
 import {ConfigService} from "./config.service";
 import {Router} from "@angular/router";
 import {DictionaryChecker} from "../interface/dictionaries-question";
@@ -65,20 +65,20 @@ export class HelperService {
         }),
         catchError((error) => {
           this.setAuthStatus(false);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/login']).then();
           return of(false);
         })
       )
   }
 
-  checkerDictionary(questions: any[], answer: any[], type?: string): DictionaryChecker {
+  checkerDictionary(questions: any[], answer: any[], type: string): DictionaryChecker {
     const correct = questions.filter((item, i) => item.english.toLowerCase() === answer[i]);
     const incorrect = questions.filter((item, i) => item.english.toLowerCase() !== answer[i]);
     const result = {correct, incorrect, type};
     return result;
   }
 
-  checkerGrammar(questions: GrammarQS[], answer: string[], type: string): GrammarChecker | ReadingChecker | ListeningChecker | DictionaryChecker | WritingChecker {
+  checkerGrammar(questions: any[], answer: string[], type: string): GrammarChecker | ReadingChecker | ListeningChecker | DictionaryChecker | WritingChecker {
     const correct = questions.filter((item, i) => item.answer.toLowerCase().trim() === answer[i].toLowerCase().trim());
     const incorrect = questions.filter((item, i) => item.answer.toLowerCase().trim() !== answer[i].toLowerCase().trim());
     const result = {correct, incorrect, type};
@@ -87,5 +87,25 @@ export class HelperService {
 
   shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
+  }
+
+  userLogout() {
+    localStorage.clear();
+    this.isAuthenticated.next(false);
+    this.router.navigate(['/login']).then();
+  }
+
+  removeUser(id: string): Observable<any> {
+    const url = `${this.config.upConfig.deleteUser}/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.config.accessToken}`
+    });
+    return this.http.delete(url, {headers})
+      .pipe(take(1),
+        tap(() => {
+          this.userLogout();
+        })
+      );
   }
 }

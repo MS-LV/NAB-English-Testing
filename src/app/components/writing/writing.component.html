@@ -1,1 +1,66 @@
-<p>writing works!</p>
+<form [formGroup]="questionForm" (ngSubmit)="questionSubmit()"
+      class="main__container">
+  <div class="main__img">
+    <img class="responsive-img" src="assets/images/english-level-{{config.userInfo.userLevel}}.png" alt="">
+  </div>
+  <div class="testing__descriptions">
+    <h1 class="description__header">English {{config.userInfo.userLevel | titlecase}} Test - Version - A
+      (NAB)</h1>
+  </div>
+  <div class="question-card">
+    <div class="card-header">Writing section</div>
+    <div class="card-description">
+      <p>Choose on of the topics and write your essay</p>
+      <u class="bold">WARNING</u>
+      <ul>
+        <li class="bold">
+          if it is hard for you to type your essay, choose your topic and ask your teacher for a paper form
+        </li>
+      </ul>
+      <br>
+      <u class="bold">STRUCTURE</u>
+      <p>A good essay keeps the following structure:</p>
+      <p class="bold">- Introduction</p>
+      <p class="bold">- Body paragraphs</p>
+      <br>
+      <ul>
+        <li>Reason #1</li>
+        <li>Reason #2</li>
+      </ul>
+      <br>
+      <p class="bold">- Coclusion</p>
+    </div>
+  </div>
+
+  <div class="card__img">
+    <img src="assets/images/writing-section.png">
+  </div>
+
+  <div>
+    <div [ngClass]="{
+    correct: false,
+    incorrect: false
+    }" class="question">
+      <h3 class="bold">Choose one of the following topics.</h3>
+      <mat-radio-group  formControlName="theme">
+        <mat-radio-button
+          *ngFor="let question of questions; let idx = index"
+          [value]="question.theme">
+          {{ question.theme }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="essay-text">
+    <h3 class="bold">Write an essay about the topic you have choosen</h3>
+    <mat-card-content>
+      <mat-form-field class="card-text-field">
+        <input matInput formControlName="essay" placeholder="write you answer" type="text" required>
+      </mat-form-field>
+    </mat-card-content>
+  </div>
+  <div class="submit">
+    <button type="reset" mat-raised-button color="warn" [disabled]="!questionForm.dirty">Clear</button>
+    <button class="submit-btn" mat-raised-button color="primary">Submit</button>
+  </div>
+</form>

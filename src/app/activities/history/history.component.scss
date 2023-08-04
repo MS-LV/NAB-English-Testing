@@ -1,11 +1,62 @@
+
 .demo-table {
   width: 100%;
+  position: relative;
+  margin: 10px 0 100px;
+}
 
-  ::ng-deep {
-    .mdc-data-table__header-cell,
-    .mdc-data-table__cell {
-      text-align: center;
-      font-size: 18px;
+.thead, .tr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  text-transform: capitalize;
+  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.2), 0 -5px 5px -5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  height: 60px;
+  margin: 10px 0;
+  cursor: pointer;
+  column-gap: 10px;
+
+  div {
+    text-align: center;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+.student {
+  .thead div, .tr div {
+    &:nth-of-type(1),
+    &:last-of-type {
+      flex: 0 0 25%;
+    }
+
+    &:nth-of-type(2) {
+      flex: 0 0 15%;
+    }
+
+    &:nth-of-type(3) {
+      flex: 1 1 auto;
     }
   }
+}
+
+.admin {
+  .thead div, .tr div {
+    flex: 0 1 25%;
+    &:nth-child(3) {
+      flex: 1 1 10%;
+    }
+  }
+}
+.exam {
+  background-color: #64b5f6;
+}
+
+.thead {
+  background-color: #3f51b5;
+  color: white;
+  gap: 20px;
 }

@@ -39,6 +39,8 @@ import { DictionaryComponent } from './components/dictionary/dictionary.componen
 import { WritingComponent } from './components/writing/writing.component';
 import { SpeakingComponent } from './components/speaking/speaking.component';
 import { TestingDialogComponent } from './components/testing-dialog/testing-dialog.component';
+import { HistoryPopupComponent } from './activities/history/history-popup/history-popup.component';
+import { AdminComponent } from './activities/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { TestingDialogComponent } from './components/testing-dialog/testing-dial
     DictionaryComponent,
     WritingComponent,
     SpeakingComponent,
-    TestingDialogComponent
+    TestingDialogComponent,
+    HistoryPopupComponent,
+    AdminComponent,
   ],
     imports: [
         BrowserModule,

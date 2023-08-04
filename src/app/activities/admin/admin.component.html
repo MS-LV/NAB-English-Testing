@@ -1,0 +1,7 @@
+<div class="main__container">
+    <h1>Admin</h1>
+    <mat-slide-toggle *ngIf="serverConfig" color="primary" [(ngModel)]="serverConfig.isExam"
+                      (ngModelChange)="changeOptions()">Exam is <span
+            class="bold">{{serverConfig.isExam ? 'ON' : 'OFF'}}</span>
+    </mat-slide-toggle>
+</div>

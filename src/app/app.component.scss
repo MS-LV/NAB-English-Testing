@@ -4,10 +4,15 @@
   height: 100%;
   display: block;
 }
+
 .toolbar-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  mat-toolbar {
+    max-height: 56px;
+  }
 }
 
 .logo {
@@ -44,6 +49,10 @@ a.active-mobile {
 
 .sidenav-container {
   height: 100%;
+
+  a {
+    text-transform: capitalize;
+  }
 }
 
 mat-sidenav {
@@ -53,9 +62,11 @@ mat-sidenav {
 mat-sidenav-content {
   padding: 20px;
 }
+
 .mat-mdc-list-item-interactive::before {
   background-color: transparent !important;
 }
+
 @media (max-width: 768px) {
   .navbar-small-screen {
     display: flex;

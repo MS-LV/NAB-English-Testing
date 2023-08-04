@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GrammarQS, ReadingQS} from "../../interface/testing";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HelperService} from "../../services/helper.service";
@@ -12,10 +12,10 @@ import {ReadingQuestion} from "../../activities/testing/testing.interface";
   templateUrl: './reading.component.html',
   styleUrls: ['./reading.component.scss', '../../components/styles/questions.scss']
 })
-export class ReadingComponent {
+export class ReadingComponent implements OnInit {
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
+  @Input() questions: ReadingQuestion[] | any[];
   date = new Date();
-  currentCard: ReadingQS[] = [];
   questionForm: FormGroup = new FormGroup({
     questions: new FormArray([])
   });
@@ -24,6 +24,9 @@ export class ReadingComponent {
               private helper: HelperService,
               public config: ConfigService,
               public testingService: TestingService) {
+  }
+
+  ngOnInit() {
     this.loadQuestions();
   }
 
@@ -33,16 +36,14 @@ export class ReadingComponent {
 
   questionSubmit(event: Event) {
     const answer = this.questionForm.value.questions;
-    const checkAnswer = this.helper.checkerGrammar(this.currentCard, answer, 'reading');
+    const checkAnswer = this.helper.checkerGrammar(this.questions, answer, 'reading');
     this.testingService.saveData.push(checkAnswer);
     this.onSubmit.emit('submit');
   }
 
   private loadQuestions() {
-    const questions = this.service.formatArray(this.testingService.currentCard);
-    questions.length = 5;
-    this.currentCard = questions;
-    console.log(questions);
+    this.questions.length = 5;
+    const questions = this.service.formatArray(this.questions);
     for (let i = 0; i < questions.length; i++) {
       this.questionArray.push(new FormControl('', Validators.required));
     }

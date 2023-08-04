@@ -55,8 +55,13 @@ main {
 }
 
 .card-description {
+  display: flex;
+  flex-direction: column;
   flex: 1 1 auto;
   min-width: 70%;
+  > * + * {
+    margin-top: 30px;
+  }
 }
 .description-block {
   width: 100%;
@@ -76,7 +81,7 @@ main {
 }
 
 .description-item {
-  flex: 0 1 50%;
+  flex: 1 1 50%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -85,6 +90,19 @@ main {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+}
+
+.card-buttons {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.logout-btn, .remove {
+  width: 100px;
+  height: 40px;
+  border-radius: 0.25rem;
 }
 
 .item-header {

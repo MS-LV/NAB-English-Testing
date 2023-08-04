@@ -8,7 +8,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 @import "~@fortawesome/fontawesome-free/css/all.css";
-//@import "./fonts";
+@import "./fonts";
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -67,6 +67,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-size: 18px;
+  line-height: 1;
 }
 
 html, body {
@@ -108,4 +109,18 @@ small {
 
 .correct {
   border-top: 10px solid #66bb6a !important;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.dangerous-btn {
+  background-color: #f44336;
+  color: #fff;
+  border-radius: .25rem;
 }

@@ -17,13 +17,14 @@ export class EverydayService {
 
   getDictationQuestion(block: string, group: string): Observable<DictionariesQuestion[]> {
     this.testInfo = {block, group};
+    const url = this.config.upConfig.everyday;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.config.accessToken}`,
       'block': block,
       'level': this.config.userInfo.userLevel
     });
-    return this.http.get<DictionariesQuestion[]>(this.config.upConfig.everyday, {headers})
+    return this.http.get<DictionariesQuestion[]>(url, {headers})
       .pipe(
         take(1),
         map((cards) => {
@@ -33,8 +34,11 @@ export class EverydayService {
   }
 
   saveToHistory(body: DictionaryChecker, headers: HttpHeaders): Observable<any> {
-    body = {...body, group: this.testInfo.group, block: this.testInfo.block}
-    return this.http.post(this.config.upConfig!.everyday, body, {headers})
+    const url = this.config.upConfig.everyday
+    const {correct, incorrect, type} = body;
+    const data = [{correct, incorrect, type}];
+    const bodyParse = {data, group: this.testInfo.group, block: this.testInfo.block}
+    return this.http.post(url, bodyParse, {headers})
       .pipe(take(1));
   }
 }

@@ -1,29 +1,39 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+<router-outlet></router-outlet>
+<div class="demo-table" [ngClass]="{
+student: config.userInfo.role === 'STUDENT',
+teacher: config.userInfo.role === 'TEACHER',
+admin: config.userInfo.role === 'ADMIN'
+}">
+    <ng-container *ngIf="config.userInfo.role === 'STUDENT' else instructor">
+        <div class="thead">
+            <div>type</div>
+            <div>block</div>
+            <div>group</div>
+            <div>date</div>
+        </div>
+        <div *ngFor="let history of historyData" [ngClass]="{exam: history.type.toLowerCase() === 'exam'}" class="tr"
+             [routerLink]="[history._id]">
+            <div>{{history.type}}</div>
+            <div>{{history.block}}</div>
+            <div>{{history.group}}</div>
+            <div>{{history.createdAt | date:"MM/dd/yyyy"}}</div>
+        </div>
+    </ng-container>
+    <ng-template #instructor>
+        <div class="thead">
+            <div>full name</div>
+            <div>group</div>
+            <div>block</div>
+            <div>date</div>
+        </div>
+        <div *ngFor="let history of historyData" [ngClass]="{exam: history.type.toLowerCase() === 'exam'}" class="tr"
+             [routerLink]="[history._id]">
+            <div>{{history.user.name}} {{history.user.surename}}</div>
+            <div>{{history.group}}</div>
+            <div>{{history.block}}</div>
+            <div>{{history.createdAt | date:"MM/dd/yyyy"}}</div>
+        </div>
+    </ng-template>
 
-  <ng-container matColumnDef="passed">
-    <th mat-header-cell *matHeaderCellDef>Passed</th>
-    <td mat-cell *matCellDef="let element"> {{element!.createdAt | date:'d/M/y'}} </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="all/correct">
-    <th mat-header-cell *matHeaderCellDef> correct/all</th>
-    <td mat-cell *matCellDef="let element">{{element!.correct.length}}/{{element.correct.length + element.incorrect.length}}</td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef> type</th>
-    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="score">
-    <th mat-header-cell *matHeaderCellDef> score</th>
-    <td mat-cell *matCellDef="let element"> {{element.score}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+</div>
 

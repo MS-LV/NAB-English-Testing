@@ -3,23 +3,25 @@ export interface ConfigsInterface {
   auth: string;
   loginURL: string;
   registryURL: string;
-  refreshURL: string;
   dictionary: string;
   everyday: string;
   testing: string;
-  isAuthorized:string,
+  isAuthorized: string,
   history: string;
-  grammar: string;
-  reading: string;
-  listening: string;
-  writing: string;
+  deleteUser: string;
+  serverConfig: string;
 }
 
-export interface UserInfo {
+export interface IUserInfo {
   id: string;
   name: string;
   surename: string;
   userLevel: string;
   role: string;
   email: string;
+}
+
+export interface IServerConfig {
+  _id?: string;
+  isExam: boolean;
 }

@@ -1,21 +1,21 @@
 <div [ngSwitch]="page" class="main">
   <div *ngSwitchCase="'grammar'">
-    <app-grammar (onSubmit)="onSubmitCards($event)"></app-grammar>
+    <app-grammar [questions]="service.currentCard" (onSubmit)="onSubmitCards($event)"></app-grammar>
   </div>
   <div *ngSwitchCase="'reading'">
-    <app-reading (onSubmit)="onSubmitCards($event)"></app-reading>
+    <app-reading [questions]="service.currentCard" (onSubmit)="onSubmitCards($event)"></app-reading>
   </div>
   <div *ngSwitchCase="'listening'">
-    <app-listening (onSubmit)="onSubmitCards($event)"></app-listening>
+    <app-listening [questions]="service.currentCard" (onSubmit)="onSubmitCards($event)"></app-listening>
   </div>
   <div *ngSwitchCase="'dictionary'">
     <app-dictionary [questions]="service.currentCard" (onSubmit)="onSubmitCards($event)"></app-dictionary>
   </div>
   <div *ngSwitchCase="'writing'">
-    <app-writing (onSubmit)="onSubmitCards($event)"></app-writing>
+    <app-writing [questions]="service.currentCard" (onSubmit)="onSubmitCards($event)"></app-writing>
   </div>
   <div *ngSwitchCase="'speaking'">
-    <app-speaking (onSubmit)="onSubmitCards($event)"></app-speaking>
+    <app-speaking [questions]="service.currentCard" (onSubmit)="onSubmitCards($event)"></app-speaking>
   </div>
   <div *ngSwitchDefault class="main">
     <form [formGroup]="testingInfo" (ngSubmit)="startTestingSubmit()"

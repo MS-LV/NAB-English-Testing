@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ConfigService} from "../../services/config.service";
 import {TestingService} from "./testing.service";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-testing',
@@ -13,8 +14,8 @@ export class TestingComponent {
   page = '';
   blocks: string[] = ['A', 'B', 'C'];
   date = new Date();
-  // testSteps = ['grammar', 'reading', 'listening', 'dictionary', 'writing', 'speaking'];
-  testSteps = ['dictionary', 'grammar', 'listening', 'dictionary', 'writing', 'speaking'];
+  testSteps = ['grammar', 'reading', 'listening', 'dictionary', 'writing'];
+  // testSteps = ['writing', 'grammar'];
 
   private idxCard = 0;
 
@@ -24,14 +25,13 @@ export class TestingComponent {
       group: new FormControl('web', [Validators.required]),
       block: new FormControl('A', [Validators.required])
     });
-    this.startTestingSubmit();
+    // this.startTestingSubmit();
   }
 
   startTestingSubmit() {
     const {block, group} = this.testingInfo.value;
     this.service.loadCard(this.testSteps[this.idxCard], block, group)
       .subscribe((item) => {
-        console.log('URL', this.testSteps[this.idxCard], this.idxCard);
         this.changePage();
       });
   }

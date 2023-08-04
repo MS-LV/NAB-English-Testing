@@ -17,11 +17,15 @@
             <h4 class="item-header bold">Email</h4>
             <div class="item-value">{{config.userInfo.email}}</div>
           </div>
-          <div class="description-item">
+          <div class="description-item" *ngIf="config.userInfo.role === 'STUDENT'">
             <h4 class="item-header bold">Level</h4>
             <div class="item-value capitalize">{{config.userInfo.userLevel | titlecase}}</div>
           </div>
         </div>
+      </div>
+      <div class="card-buttons">
+        <div class="remove btn dangerous-btn" (click)="remove()">remove</div>
+        <div class="logout-btn btn dangerous-btn" (click)="logout()">Logout</div>
       </div>
     </div>
   </div>

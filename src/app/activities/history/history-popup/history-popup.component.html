@@ -1,0 +1,40 @@
+<div *ngIf="currentHistory" class="main__container">
+  <h1 class="type">{{currentHistory.type}}</h1>
+  <div class="test-info section">
+    <div class="group">
+      <span class="title">Group: </span>
+      <span class="bold">{{currentHistory.group}}</span>
+    </div>
+    <div class="block">
+      <span class="title">Block: </span>
+      <span class="bold">{{currentHistory.block}}</span>
+    </div>
+  </div>
+  <h1 class="name">{{currentHistory.user.name}} {{currentHistory.user.surename}} </h1>
+  <div class="date">{{currentHistory.createdAt | date:'dd/MM/yyyy, HH:mm aaa'}}</div>
+  <fieldset *ngFor="let activity of currentHistory.data"
+            [ngClass]="{writing: activity.type.toLowerCase() === 'writing'}">
+    <legend>{{activity.type | titlecase}}</legend>
+    <div class="unit-activity">
+      <ng-container *ngIf="activity.correct;">
+        <div>correct: {{activity.correct.length}}</div>
+        <div>incorrect: {{activity.incorrect.length}}</div>
+      </ng-container>
+
+      <ng-container *ngIf="activity.type.toLowerCase() === 'writing'">
+        <div>
+          <div class="bold">Theme:</div>
+          <br>{{activity.theme}}</div>
+        <div>
+          <div class="bold">essay:</div>
+          <br> {{activity.essay}}</div>
+      </ng-container>
+    </div>
+  </fieldset>
+
+  <div class="score">
+    <div class="title">Score:</div>
+    <div class="score-item">{{currentHistory.score}}</div>
+  </div>
+</div>
+

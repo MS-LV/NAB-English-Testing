@@ -20,7 +20,8 @@ export class LoginService {
   }
 
   registration(body: RegistrationControls): Observable<AuthorizationMessage> {
-    return this.http.post<AuthorizationData>(this.config.upConfig!.registryURL, body, {observe: 'response'})
+    const url = this.config.upConfig.registryURL;
+    return this.http.post<AuthorizationData>(url, body, {observe: 'response'})
       .pipe(
         take(1),
         map((response: HttpResponse<AuthorizationData>) => {
@@ -33,19 +34,13 @@ export class LoginService {
             status: 'success'
           }
           return message;
-        }), catchError((error: HttpErrorResponse) => {
-          const message = {
-            statusCode: 400,
-            message: error.error.message,
-            status: 'error'
-          }
-          return of(message);
-        }),
+        })
       );
   }
 
   login(body: LoginControls): Observable<AuthorizationMessage> {
-    return this.http.post<AuthorizationData>(this.config.upConfig!.loginURL, body, {
+    const url = this.config.upConfig.loginURL;
+    return this.http.post<AuthorizationData>(url, body, {
       observe: 'response',
       withCredentials: true
     })
@@ -61,15 +56,8 @@ export class LoginService {
             status: 'success'
           }
           return message;
-        }),
-        catchError((error: HttpErrorResponse) => {
-          const message = {
-            statusCode: 400,
-            message: error.error.message,
-            status: 'error'
-          }
-          return of(message);
         })
       )
   }
+
 }

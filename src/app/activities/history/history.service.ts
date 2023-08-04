@@ -14,21 +14,11 @@ export class HistoryService {
   }
 
   getHistory(): Observable<HistoryResponse[]> {
+    const url = this.config.upConfig.history;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.config.accessToken}`
     });
-    return this.http.get<HistoryResponse[]>(this.config.upConfig!.history, {headers})
-      .pipe(
-        map((cards) => {
-          cards.forEach((card) => {
-            const {correct, incorrect} = card;
-            const score = (correct.length / (correct.length + incorrect.length)) * 100;
-            const result = score >= 90 ? 5 : score >= 65 ? 4 : score >= 50 ? 3 : score >= 30 ? 2 : 1;
-            card.score = result;
-          })
-          return cards;
-        })
-      )
+    return this.http.get<HistoryResponse[]>(url, {headers})
   }
 }

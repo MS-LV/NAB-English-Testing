@@ -25,10 +25,4 @@ export class GrammarService {
     });
     return slicedData;
   }
-
-  // saveToHistory(body: GrammarChecker, headers: HttpHeaders, testInfo:{ group: string; block: string }): Observable<any> {
-  //   body = {...body, group: testInfo.group, block: testInfo.block};
-  //   return this.http.post(this.config.upConfig.history, body, {headers})
-  //     .pipe(take(1));
-  // }
 }

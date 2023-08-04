@@ -1,0 +1,45 @@
+:host {
+  form.main__container {
+    .question-card {
+      padding: 0;
+
+      & > * {
+        margin: 0;
+        padding: 20px;
+      }
+
+      & .card-header {
+        background-color: #1e88e5 ;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+    > .card__img {
+      img {
+        display: block;
+        width: 95%;
+        margin: 5px auto;
+      }
+    }
+    .card-description {
+      > * {
+        margin: 15px 0;
+      }
+    }
+    .question {
+      .bold {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    .essay-text {
+      .bold {
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+    mat-radio-group mat-radio-button {
+      margin: 10px 0;
+    }
+  }
+}

@@ -1,10 +1,14 @@
-import {ConfigsInterface, UserInfo} from "../interface/configs";
+import {ConfigsInterface, IServerConfig, IUserInfo} from "../interface/configs";
+import {Observable, take} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class ConfigService {
   upConfig!: ConfigsInterface;
-  private _private: UserInfo;
+  private _private: IUserInfo;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.init();
   }
 
@@ -13,7 +17,25 @@ export class ConfigService {
     this.upConfig = window.upConfig;
   }
 
-  get userInfo(): UserInfo {
+  serverConfig(): Observable<IServerConfig> {
+    const url = this.upConfig.serverConfig;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.accessToken}`
+    });
+    return this.http.get<IServerConfig>(url, {headers}).pipe(take(1));
+  }
+
+  updateServerConfig(data: IServerConfig): Observable<IServerConfig> {
+    const url = this.upConfig.serverConfig;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.accessToken}`
+    });
+    return this.http.put<IServerConfig>(url, data, {headers}).pipe(take(1));
+  }
+
+  get userInfo(): IUserInfo {
     return JSON.parse(localStorage.getItem('userInfo') as any);
   }
 

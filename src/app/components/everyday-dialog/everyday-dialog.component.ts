@@ -12,7 +12,7 @@ export class EverydayDialogComponent implements AfterViewInit {
   get score(): number {
     const {correct, incorrect} = this.data;
     const score = (correct.length / (correct.length + incorrect.length)) * 100;
-    const result = score >= 90 ? 5 : score >= 65 ? 4 : score >= 50 ? 3 : score >= 30 ? 2 : 1;
+    const result = score >= 85 ? 5 : score >= 65 ? 4 : score >= 50 ? 3 : score >= 30 ? 2 : 1;
     return result;
   }
 

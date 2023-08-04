@@ -25,7 +25,7 @@
     <!--  <img src="assets/images/reading-text-beginner-1.png">-->
   </div>
   <ng-container formArrayName="questions">
-    <div *ngFor="let question of currentCard; let idx = index"
+    <div *ngFor="let question of questions; let idx = index"
          [ngClass]="{
     correct: false,
     incorrect: false

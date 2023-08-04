@@ -55,7 +55,7 @@ export class QuestionCardComponent implements AfterViewInit, OnDestroy {
   }
 
   onSubmit(event: Event): void {
-    const checkAnswer = this.helper.checkerDictionary(this.questions, this.dictionaryForm.value['cards']);
+    const checkAnswer = this.helper.checkerDictionary(this.questions, this.dictionaryForm.value['cards'], 'dictionary');
     this.openResultDialog(checkAnswer);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
