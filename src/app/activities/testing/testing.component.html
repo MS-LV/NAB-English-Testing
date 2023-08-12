@@ -27,14 +27,19 @@
         <h1 class="description__header">English {{config.userInfo.userLevel | titlecase}} Test - Version - A
           (NAB)</h1>
         <p class="bold">Hello dear <br> test takers!</p>
-        <p>This is standardized test of English language for Beginner level. <wbr>
-          We test your English language knowledge based on 6 sections:</p>
+        <p>This is standardized test of English language for Beginner level.
+          <wbr>
+          We test your English language knowledge based on 6 sections:
+        </p>
         <ul>
           <li *ngFor="let step of testSteps" class="bold">
             {{step}}
           </li>
         </ul>
-        <p>We kindly ask you to fill the entire test, <wbr> answer all questions and be attentive during the test.</p>
+        <p>We kindly ask you to fill the entire test,
+          <wbr>
+          answer all questions and be attentive during the test.
+        </p>
         <p class="bold copy-right">&copy; NAB - {{date | date:'yyyy'}}</p>
       </div>
       <div class="testing-group">

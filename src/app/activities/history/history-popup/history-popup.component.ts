@@ -26,7 +26,7 @@ export class HistoryPopupComponent {
         mergeMap((param) => {
           return this.service.unitHistory(param['id']);
         }),
-        catchError((err:HttpErrorResponse) => {
+        catchError((err: HttpErrorResponse) => {
           return this.errorHandler(err);
         })
       )
@@ -48,6 +48,7 @@ export class HistoryPopupComponent {
       data
     });
   }
+
   private errorHandler(err: HttpErrorResponse): Observable<never> {
     if (err.statusText === 'Not Found') {
       const message = {

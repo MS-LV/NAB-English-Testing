@@ -3,7 +3,7 @@ export interface AuthorizationData {
   refreshToken: string;
   status: {
     level: string;
-    role:string;
+    role: string;
   }
   user: {
     id: string;

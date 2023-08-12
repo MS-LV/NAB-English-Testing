@@ -4,12 +4,14 @@
   height: 100vh;
   background-color: #E3F2FD;
 }
+
 mat-tab-group {
 }
 
 ::ng-deep mat-tab-body {
   overflow-y: visible;
 }
+
 mat-card {
   width: 400px;
   margin: 20px auto;
@@ -39,6 +41,7 @@ form {
 
 .switch-area {
   margin: 10px 0 20px;
+
   > div {
     margin: 0 0 5px;
   }

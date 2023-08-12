@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
 import {GrammarQS} from '../../interface/testing';
-import {DictionaryChecker} from "../../interface/dictionaries-question";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable, take} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 import {ConfigService} from "../../services/config.service";
-import {GrammarChecker} from "./grammar.interface";
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GrammarQS} from "../../interface/testing";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HelperService} from "../../services/helper.service";
 import {ConfigService} from "../../services/config.service";

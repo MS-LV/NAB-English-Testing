@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GrammarQS, ReadingQS} from "../../interface/testing";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HelperService} from "../../services/helper.service";
 import {ConfigService} from "../../services/config.service";
@@ -15,7 +14,6 @@ import {ReadingQuestion} from "../../activities/testing/testing.interface";
 export class ReadingComponent implements OnInit {
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
   @Input() questions: ReadingQuestion[] | any[];
-  date = new Date();
   questionForm: FormGroup = new FormGroup({
     questions: new FormArray([])
   });

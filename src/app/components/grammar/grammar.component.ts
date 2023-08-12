@@ -3,7 +3,6 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ConfigService} from "../../services/config.service";
 import {TestingService} from "../../activities/testing/testing.service";
 import {GrammarService} from "./grammar.service";
-import {GrammarQS} from 'src/app/interface/testing';
 import {HelperService} from "../../services/helper.service";
 import {GrammarQuestion} from "../../activities/testing/testing.interface";
 

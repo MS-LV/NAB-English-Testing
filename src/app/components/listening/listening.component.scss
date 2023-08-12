@@ -9,11 +9,12 @@
       }
 
       & .card-header {
-        background-color: #1e88e5 ;
+        background-color: #1e88e5;
         text-transform: uppercase;
         font-weight: bold;
       }
     }
+
     > .card__img {
       img {
         display: block;
@@ -21,11 +22,13 @@
         margin: 5px auto;
       }
     }
+
     .card-description {
       > * {
         margin: 15px 0;
       }
     }
+
     .question {
       h3 {
         font-size: 20px;
@@ -33,6 +36,7 @@
         margin: 0;
       }
     }
+
     .question-header {
       display: flex;
       justify-content: space-between;

@@ -32,14 +32,18 @@
     padding: 5px 0;
   }
 }
+
 .thead div {
   margin: 0;
 }
+
 .tr {
   cursor: default;
+
   div:nth-child(2) {
     text-transform: initial;
   }
+
   select {
     text-transform: capitalize;
   }

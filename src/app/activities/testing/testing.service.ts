@@ -1,13 +1,9 @@
 import {Injectable} from '@angular/core';
-import {map, Observable, of, take, tap} from "rxjs";
+import {Observable, take, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GrammarQuestion, ListeningQuestions, ReadingQuestion, WritingQuestion} from "./testing.interface";
-import {DictionariesQuestion, DictionaryChecker} from "../../interface/dictionaries-question";
+import {DictionariesQuestion} from "../../interface/dictionaries-question";
 import {ConfigService} from "../../services/config.service";
-import {GrammarChecker} from "../../components/grammar/grammar.interface";
-import {ReadingChecker} from "../../components/reading/reading.interface";
-import {ListeningChecker} from "../../components/listening/listening.interface";
-import {WritingChecker} from "../../components/writing/writing.interface";
 import {HelperService} from "../../services/helper.service";
 import {Router} from "@angular/router";
 import {HistoryResponse} from "../../interface/history";

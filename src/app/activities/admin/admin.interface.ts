@@ -1,4 +1,4 @@
 export interface IQuestionList {
-    type: string;
-    list: object[];
+  type: string;
+  list: object[];
 }

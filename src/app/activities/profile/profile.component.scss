@@ -40,10 +40,12 @@ main {
     color: white;
     line-height: 24px;
   }
+
   .card-img {
     width: 100%;
     margin-bottom: 10px;
   }
+
   .card-role {
     margin-bottom: 5px;
   }
@@ -59,10 +61,12 @@ main {
   flex-direction: column;
   flex: 1 1 auto;
   min-width: 70%;
+
   > * + * {
     margin-top: 30px;
   }
 }
+
 .description-block {
   width: 100%;
 }
@@ -85,6 +89,7 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
   > * {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -107,6 +112,7 @@ main {
 
 .item-header {
   margin: 0 0 10px;
+
   &.bold {
     font-weight: bold;
   }

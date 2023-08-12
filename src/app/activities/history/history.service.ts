@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ConfigService} from "../../services/config.service";
 import {HistoryResponse} from "../../interface/history";

@@ -5,7 +5,7 @@ export interface HistoryResponse {
   group: string;
   block: string;
   data: DictionaryChecker[];
-  user: {id: string; name: string; surename: string};
+  user: { id: string; name: string; surename: string };
   type: string;
   score: number;
   createdAt: string;

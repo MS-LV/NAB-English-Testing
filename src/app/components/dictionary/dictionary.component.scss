@@ -9,14 +9,16 @@
       }
 
       & .card-header {
-        background-color: #1e88e5 ;
+        background-color: #1e88e5;
         text-transform: uppercase;
         font-weight: bold;
       }
     }
-    > mat-card  > * {
+
+    > mat-card > * {
       margin: 0 10px 10px;
     }
+
     > .card__img {
       img {
         display: block;
@@ -24,6 +26,7 @@
         margin: 5px auto;
       }
     }
+
     .question {
       h3 {
         font-size: 20px;
@@ -31,6 +34,7 @@
         margin: 0;
       }
     }
+
     .question-header {
       display: flex;
       justify-content: space-between;

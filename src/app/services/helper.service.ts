@@ -5,7 +5,6 @@ import {BehaviorSubject, catchError, map, Observable, of, take, tap} from "rxjs"
 import {ConfigService} from "./config.service";
 import {Router} from "@angular/router";
 import {DictionaryChecker} from "../interface/dictionaries-question";
-import {GrammarQS} from "../interface/testing";
 import {GrammarChecker} from "../components/grammar/grammar.interface";
 import {ReadingChecker} from "../components/reading/reading.interface";
 import {ListeningChecker} from "../components/listening/listening.interface";

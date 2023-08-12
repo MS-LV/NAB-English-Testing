@@ -31,17 +31,17 @@ import {MatCardModule} from "@angular/material/card";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
-import { GrammarComponent } from './components/grammar/grammar.component';
-import { ReadingComponent } from './components/reading/reading.component';
-import { ListeningComponent } from './components/listening/listening.component';
-import { DictionaryComponent } from './components/dictionary/dictionary.component';
-import { WritingComponent } from './components/writing/writing.component';
-import { SpeakingComponent } from './components/speaking/speaking.component';
-import { TestingDialogComponent } from './components/testing-dialog/testing-dialog.component';
-import { HistoryPopupComponent } from './activities/history/history-popup/history-popup.component';
-import { AdminComponent } from './activities/admin/admin.component';
+import {GrammarComponent} from './components/grammar/grammar.component';
+import {ReadingComponent} from './components/reading/reading.component';
+import {ListeningComponent} from './components/listening/listening.component';
+import {DictionaryComponent} from './components/dictionary/dictionary.component';
+import {WritingComponent} from './components/writing/writing.component';
+import {SpeakingComponent} from './components/speaking/speaking.component';
+import {TestingDialogComponent} from './components/testing-dialog/testing-dialog.component';
+import {HistoryPopupComponent} from './activities/history/history-popup/history-popup.component';
+import {AdminComponent} from './activities/admin/admin.component';
 import {MatSelectModule} from "@angular/material/select";
-import { UserListComponent } from './activities/user-list/user-list.component';
+import {UserListComponent} from './activities/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -68,30 +68,30 @@ import { UserListComponent } from './activities/user-list/user-list.component';
     AdminComponent,
     UserListComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatListModule,
-        MatIconModule,
-        FontAwesomeModule,
-        MatButtonModule,
-        MatInputModule,
-        MatTabsModule,
-        MatFormFieldModule,
-        FormsModule,
-        MatSnackBarModule,
-        ReactiveFormsModule,
-        MatRadioModule,
-        HttpClientModule,
-        MatCardModule,
-        MatSlideToggleModule,
-        MatDialogModule,
-        MatTableModule,
-        MatSelectModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    FontAwesomeModule,
+    MatButtonModule,
+    MatInputModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatRadioModule,
+    HttpClientModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatDialogModule,
+    MatTableModule,
+    MatSelectModule
+  ],
   providers: [
     ConfigService,
   ],

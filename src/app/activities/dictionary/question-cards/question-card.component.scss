@@ -2,13 +2,16 @@
   > * + *:not(.submit) {
     padding: 0;
   }
+
   > .card > *:not(.submit) {
     margin: 0;
   }
+
   > .card {
     .card-header {
       margin-bottom: 20px;
     }
+
     .card-text-field {
       width: 50%;
       @media (max-width: 768px) {
@@ -24,14 +27,16 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
   > *:first-child {
     flex: 1 1 auto;
   }
+
   > *:last-child {
     flex: 0 0 max-content;
   }
 }
 
 ::ng-deep mat-dialog-actions.mat-mdc-dialog-actions.actions {
-    justify-content: space-between;
+  justify-content: space-between;
 }

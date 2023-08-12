@@ -6,7 +6,8 @@ import {ListeningQS} from "../../interface/testing";
 })
 export class ListeningService {
 
-  constructor() { }
+  constructor() {
+  }
 
   formatArray(data: any[]): ListeningQS[] {
     const slicedData = data.slice();

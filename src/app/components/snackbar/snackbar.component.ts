@@ -1,6 +1,5 @@
 import {Component, Inject, inject} from '@angular/core';
 import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from "@angular/material/snack-bar";
-import {AuthorizationMessage} from "../../interface/login";
 
 @Component({
   selector: 'app-snackbar',
@@ -9,6 +8,7 @@ import {AuthorizationMessage} from "../../interface/login";
 })
 export class SnackbarComponent {
   snackBarRef = inject(MatSnackBarRef);
+
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {
   }
 }

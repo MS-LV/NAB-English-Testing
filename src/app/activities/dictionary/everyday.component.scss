@@ -48,6 +48,7 @@ main {
     justify-content: space-between;
     width: 100%;
   }
+
   .account__url {
     max-width: 90%;
     overflow: hidden;
@@ -92,6 +93,7 @@ mat-radio-group {
   display: flex;
   justify-content: space-between;
   height: min-content;
+
   .main__container & > button {
     margin: 10px 5px;
   }

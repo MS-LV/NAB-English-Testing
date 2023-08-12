@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {ConfigService} from "../../services/config.service";
 import {HelperService} from "../../services/helper.service";
 import {AuthorizationData} from "../../interface/registration";
-import {catchError, map, Observable, of, take} from "rxjs";
-import {LoginControls, RegistrationControls, AuthorizationMessage} from "../../interface/login";
+import {map, Observable, take} from "rxjs";
+import {AuthorizationMessage, LoginControls, RegistrationControls} from "../../interface/login";
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,8 @@ export class LoginService {
   login(body: LoginControls): Observable<AuthorizationMessage> {
     const url = this.config.upConfig.loginURL;
     return this.http.post<AuthorizationData>(url, body, {
-      observe: 'response'})
+      observe: 'response'
+    })
       .pipe(
         take(1),
         map((response: HttpResponse<AuthorizationData>) => {

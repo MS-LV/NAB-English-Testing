@@ -8,16 +8,10 @@
   letter-spacing: 1.2px;
 }
 
-//.description.error {
-//  color: #e57373;
-//}
-//
-//.description.success {
-//  color: #81c784;
-//}
 ::ng-deep .error .mdc-snackbar__surface {
   background-color: #f44336;
 }
+
 ::ng-deep .success .mdc-snackbar__surface {
   background-color: #4caf50;
 }

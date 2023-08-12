@@ -42,7 +42,7 @@
     incorrect: false
     }" class="question">
       <h3 class="bold">Choose one of the following topics.</h3>
-      <mat-radio-group  formControlName="theme">
+      <mat-radio-group formControlName="theme">
         <mat-radio-button
           *ngFor="let question of questions; let idx = index"
           [value]="question.theme">

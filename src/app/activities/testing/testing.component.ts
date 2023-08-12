@@ -2,7 +2,7 @@ import {Component, ElementRef} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ConfigService} from "../../services/config.service";
 import {TestingService} from "./testing.service";
-import {catchError, Observable, of, tap} from "rxjs";
+import {catchError, Observable, of} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AuthorizationMessage} from "../../interface/login";
 import {SnackbarComponent} from "../../components/snackbar/snackbar.component";
@@ -29,7 +29,7 @@ export class TestingComponent {
   constructor(public config: ConfigService,
               public service: TestingService,
               private _snackBar: MatSnackBar,
-              private element:ElementRef) {
+              private element: ElementRef) {
     // this.startTestingSubmit();
   }
 

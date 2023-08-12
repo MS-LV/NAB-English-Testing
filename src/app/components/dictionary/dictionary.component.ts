@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HelperService} from "../../services/helper.service";
 import {ConfigService} from "../../services/config.service";
@@ -11,7 +11,7 @@ import {DictionariesQuestion} from "../../interface/dictionaries-question";
   templateUrl: './dictionary.component.html',
   styleUrls: ['./dictionary.component.scss', '../../components/styles/questions.scss']
 })
-export class DictionaryComponent implements OnInit{
+export class DictionaryComponent implements OnInit {
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
   @Input() questions: DictionariesQuestion[] | any[]
   questionForm: FormGroup = new FormGroup({
@@ -23,6 +23,7 @@ export class DictionaryComponent implements OnInit{
               private service: DictionaryService,
               private helper: HelperService) {
   }
+
   ngOnInit() {
     this.loadQuestions()
   }

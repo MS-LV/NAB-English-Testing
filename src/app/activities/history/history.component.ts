@@ -3,11 +3,7 @@ import {HistoryService} from "./history.service";
 import {HistoryResponse} from "../../interface/history";
 import {ConfigService} from "../../services/config.service";
 import {ActivatedRoute} from "@angular/router";
-import {mergeMap, Observable} from "rxjs";
-
-interface QueryParams {
-  user: string;
-}
+import {mergeMap} from "rxjs";
 
 @Component({
   selector: 'app-history',

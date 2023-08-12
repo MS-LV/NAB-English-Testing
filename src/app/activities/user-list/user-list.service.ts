@@ -22,7 +22,7 @@ export class UserListService {
     return this.http.get<IUserList[]>(url, {headers});
   }
 
-  updateUser(body: IUserList):Observable<any> {
+  updateUser(body: IUserList): Observable<any> {
     const url = this.config.upConfig.users + '/update';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
