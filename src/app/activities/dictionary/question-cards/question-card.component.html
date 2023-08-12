@@ -23,10 +23,7 @@
     </div>
   </div>
   <ng-container formArrayName="cards">
-    <mat-card *ngFor="let card of questions; let idx = index" class="card" [ngClass]="{
-    correct: isChecked && card.english.toLowerCase() === getCardValue(idx),
-    incorrect: isChecked && card.english.toLowerCase() !== getCardValue(idx)
-    }">
+    <mat-card *ngFor="let card of questions; let idx = index" class="card">
       <mat-card-header class="card-header">
         <mat-card-title>{{idx + 1}}. {{card.tajik}} - {{card.russian}}</mat-card-title>
       </mat-card-header>

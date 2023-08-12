@@ -68,7 +68,6 @@ export class AppComponent implements OnInit, OnDestroy {
     @HostListener('window:resize')
     onWindowResize() {
         this.device = this.config.deviceType;
-        console.log('resizing');
     }
 
     ngOnDestroy() {
@@ -76,8 +75,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     private openSnackBar(data: AuthorizationMessage) {
+        const className = data.status === 'success' ? 'success' : 'error'
         this._snackBar.openFromComponent(SnackbarComponent, {
-            duration: 3000,
+            panelClass: [className],
+            duration: 5000,
             data
         });
     }

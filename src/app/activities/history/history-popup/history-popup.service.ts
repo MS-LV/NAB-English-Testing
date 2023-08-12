@@ -21,22 +21,33 @@ export class HistoryPopupService {
     });
     return this.http.get<HistoryResponse>(url, {headers})
       .pipe(map(history => {
+        let allBalls = 0;
+        history.data.forEach((item) => {
+          if (history.type === 'everyday') {
+            allBalls += item.correct.length;
+            return
+          }
+          if (item.correct) {
+            const allScore = item.correct.length + item.incorrect.length;
+            const ball = 20 / allScore;
+            item.ballScore = ball * item.correct.length;
+            allBalls += ball * item.correct.length;
+          }
+        })
         const allTests = history.data.reduce((acc, item) => {
           if (!item?.correct) {
+            item.ballScore
             return acc;
           }
-          return acc += item.correct.length + item.incorrect.length
+          return acc += item.correct.length + item.incorrect.length;
         }, 0);
         const correctTests = history.data.reduce((acc, item) => {
           if (!item?.correct) {
             return acc;
           }
-          return acc += item.correct.length
+          return acc += item.correct.length;
         }, 0);
-        const percent = (correctTests / (allTests)) * 100;
-        console.log('percent', percent);
-        const score = percent >= 85 ? 5 : percent >= 65 ? 4 : percent >= 50 ? 3 : percent >= 30 ? 2 : 1;
-        history.score = score;
+        history.score = allBalls;
         return history
       }))
   }

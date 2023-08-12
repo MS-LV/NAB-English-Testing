@@ -9,11 +9,11 @@ export interface DictionariesQuestion {
 }
 
 export interface DictionaryChecker {
-  group?: string;
-  block?: string;
   correct: DictionariesQuestion[];
   incorrect: DictionariesQuestion[];
   type: string;
+  ballScore?: number;
   essay?: string;
   theme?: string;
 }
+

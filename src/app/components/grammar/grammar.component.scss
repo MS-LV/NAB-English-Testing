@@ -9,17 +9,40 @@
       }
 
       & .card-header {
-        background-color: #1e88e5 ;
+        background-color: #1e88e5;
         text-transform: uppercase;
         font-weight: bold;
       }
     }
+
     > .card__img {
       img {
         display: block;
         width: 95%;
         margin: 5px auto;
       }
+    }
+
+    .question {
+      h3 {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+
+    .question-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      column-gap: 20px;
+    }
+
+    .question-title {
+    }
+
+    .question-ball {
+      white-space: nowrap;
     }
   }
 }

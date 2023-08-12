@@ -29,7 +29,6 @@ export class TestingService {
               private router: Router) {
   }
 
-
   loadCard(url: string, block: string, group: string): Observable<GrammarQuestion[]
     | DictionariesQuestion[]
     | ListeningQuestions[]
@@ -55,7 +54,9 @@ export class TestingService {
         take(1),
         tap((item) => {
           const shuffleArray = this.helper.shuffleArray(item as any[]);
-          console.log(shuffleArray);
+          if (shuffleArray.length > 20) {
+            shuffleArray.length = 20;
+          }
           this.currentCard = shuffleArray
         })
       )

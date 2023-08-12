@@ -1,0 +1,76 @@
+:host {
+  display: block;
+  padding: 20px;
+  > * + * {
+    margin-top: 30px;
+  }
+}
+.title {
+  font-size: 30px;
+}
+.page-title {
+  text-align: center;
+  font-size: 50px;
+  line-height: 1;
+}
+
+.section {
+  padding-left: 30px;
+}
+
+.configs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  > * {
+    flex: 1 1 auto;
+  }
+}
+
+.configs-item > * + * {
+  margin-top: 10px;
+}
+.file-uploader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  > * {
+    flex: 0 1 40%;
+  }
+  div.single {
+    flex: 1 1 100%;
+    background: transparent;
+  }
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    background-color: #3f51b5;
+    color: white;
+    text-transform: capitalize;
+    border-radius: .25rem;
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+    label {
+      font-size: 25px;
+    }
+    button {
+      width: 50%;
+      height: 60px;
+    }
+  }
+}
+.touched {
+  background-color: #3f51b5;
+  color: white;
+}

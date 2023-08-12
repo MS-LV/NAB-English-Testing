@@ -1,48 +1,55 @@
 <div class="toolbar-wrapper">
-    <mat-toolbar color="primary" *ngIf="device === 'mobile'">
-        <button mat-icon-button class="menu-burger" (click)="toggleMenu()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <span class="logo">Your Logo</span>
-    </mat-toolbar>
+  <mat-toolbar color="primary" *ngIf="device === 'mobile'">
+    <button mat-icon-button class="menu-burger" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="logo">Your Logo</span>
+  </mat-toolbar>
 
-    <nav class="navbar mat-toolbar mat-primary" [ngClass]="{ 'navbar-small-screen': device === 'mobile' }">
-        <ng-container *ngIf="isAuthorized && config.userInfo.role === 'STUDENT'">
-            <a mat-button routerLink="/testing" routerLinkActive="active">Testing</a>
-            <a mat-button routerLink="/dictionary" routerLinkActive="active">Dictionary</a>
-        </ng-container>
-        <ng-container *ngIf="isAuthorized && config.userInfo.role === 'ADMIN'">
-            <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
-        </ng-container>
-        <ng-container *ngIf="isAuthorized">
-            <a mat-button routerLink="/profile" routerLinkActive="active">Profile</a>
-            <a mat-button routerLink="/history" routerLinkActive="active">History</a>
-        </ng-container>
-        <a mat-button routerLink="/login" routerLinkActive="active">Log In</a>
-        <a mat-button routerLink="/about" routerLinkActive="active">About</a>
-    </nav>
+  <nav class="navbar mat-toolbar mat-primary" [ngClass]="{ 'navbar-small-screen': device === 'mobile' }">
+    <ng-container *ngIf="isAuthorized && config.userInfo.role === 'STUDENT'">
+      <a *ngIf="serverConfig && serverConfig.isExam" mat-button routerLink="/testing"
+         routerLinkActive="active">Testing</a>
+      <a mat-button routerLink="/dictionary" routerLinkActive="active">Dictionary</a>
+    </ng-container>
+    <ng-container *ngIf="isAuthorized && ['ADMIN'].includes(config.userInfo.role)">
+      <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
+    </ng-container>
+    <ng-container *ngIf="isAuthorized && ['ADMIN', 'TEACHER'].includes(config.userInfo.role)">
+      <a mat-button routerLink="/user-list" routerLinkActive="active">Users</a>
+    </ng-container>
+    <ng-container *ngIf="isAuthorized">
+      <a mat-button routerLink="/profile" routerLinkActive="active">Profile</a>
+      <a mat-button routerLink="/history" routerLinkActive="active">History</a>
+    </ng-container>
+    <a mat-button routerLink="/login" routerLinkActive="active">Log In</a>
+    <a mat-button routerLink="/about" routerLinkActive="active">About</a>
+  </nav>
 </div>
 
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="over" [(opened)]="isMenuOpen" *ngIf="device === 'mobile'">
-        <mat-nav-list (click)="toggleMenu()">
-            <ng-container *ngIf="isAuthorized && config.userInfo.role === 'STUDENT'">
-                <a mat-list-item routerLink="/testing" routerLinkActive="active-mobile">Testing</a>
-                <a mat-list-item routerLink="/dictionary" routerLinkActive="active-mobile">Dictionary</a>
-            </ng-container>
-            <ng-container *ngIf="isAuthorized && config.userInfo.role === 'ADMIN'">
-                <a mat-list-item routerLink="/admin" routerLinkActive="active-mobile">admin</a>
-            </ng-container>
-            <ng-container *ngIf="isAuthorized">
-                <a mat-list-item routerLink="/profile" routerLinkActive="active-mobile">Profile</a>
-                <a mat-list-item routerLink="/history" routerLinkActive="active-mobile">History</a>
-            </ng-container>
-            <a mat-list-item routerLink="/login" routerLinkActive="active-mobile">Log In</a>
-            <a mat-list-item routerLink="/about" routerLinkActive="active-mobile">About</a>
-        </mat-nav-list>
-    </mat-sidenav>
+  <mat-sidenav #sidenav mode="over" [(opened)]="isMenuOpen" *ngIf="device === 'mobile'">
+    <mat-nav-list (click)="toggleMenu()">
+      <ng-container *ngIf="isAuthorized && config.userInfo.role === 'STUDENT'">
+        <a mat-list-item routerLink="/testing" routerLinkActive="active-mobile">Testing</a>
+        <a mat-list-item routerLink="/dictionary" routerLinkActive="active-mobile">Dictionary</a>
+      </ng-container>
+      <ng-container *ngIf="isAuthorized && ['ADMIN'].includes(config.userInfo.role)">
+        <a mat-list-item routerLink="/admin" routerLinkActive="active-mobile">admin</a>
+      </ng-container>
+      <ng-container *ngIf="isAuthorized && ['ADMIN', 'TEACHER'].includes(config.userInfo.role)">
+        <a mat-list-item routerLink="/user-list" routerLinkActive="active-mobile">Users</a>
+      </ng-container>
+      <ng-container *ngIf="isAuthorized">
+        <a mat-list-item routerLink="/profile" routerLinkActive="active-mobile">Profile</a>
+        <a mat-list-item routerLink="/history" routerLinkActive="active-mobile">History</a>
+      </ng-container>
+      <a mat-list-item routerLink="/login" routerLinkActive="active-mobile">Log In</a>
+      <a mat-list-item routerLink="/about" routerLinkActive="active-mobile">About</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

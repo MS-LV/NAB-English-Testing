@@ -1,12 +1,10 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {DictionaryQS} from "../../interface/testing";
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HelperService} from "../../services/helper.service";
 import {ConfigService} from "../../services/config.service";
 import {TestingService} from "../../activities/testing/testing.service";
 import {DictionaryService} from "./dictionary.service";
 import {DictionariesQuestion} from "../../interface/dictionaries-question";
-import {timer} from "rxjs";
 
 @Component({
   selector: 'app-dictionary',
@@ -20,10 +18,10 @@ export class DictionaryComponent implements OnInit{
     questions: new FormArray([])
   });
 
-  constructor(private service: DictionaryService,
-              private helper: HelperService,
-              public config: ConfigService,
-              public testingService: TestingService) {
+  constructor(public config: ConfigService,
+              public testingService: TestingService,
+              private service: DictionaryService,
+              private helper: HelperService) {
   }
   ngOnInit() {
     this.loadQuestions()
@@ -41,7 +39,6 @@ export class DictionaryComponent implements OnInit{
   }
 
   private loadQuestions() {
-    this.questions.length = 5
     const questions = this.service.formatArray(this.questions);
     for (let i = 0; i < questions.length; i++) {
       this.questionArray.push(new FormControl('', Validators.required));

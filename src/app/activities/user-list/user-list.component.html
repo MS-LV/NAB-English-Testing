@@ -1,0 +1,26 @@
+<div *ngIf="usersList" class="demo-table">
+  <div class="thead">
+    <div>full name</div>
+    <div>email</div>
+    <div>level</div>
+    <div>role</div>
+  </div>
+  <div *ngFor="let user of usersList" [routerLink]="['/history']" [queryParams]="{user: user._id}" class="tr">
+    <div>{{user.name}} {{user.surename}}</div>
+    <div>{{user.email}}</div>
+    <div>
+      <select #userLevelSelect (click)="cancelClick($event)" (change)="changeLevel(userLevelSelect, user)">
+        <option *ngFor="let level of userLevel"
+                [selected]="user.level === level"
+                [value]="level">{{level}}</option>
+      </select>
+    </div>
+    <div>
+      <select #userRoleSelect (click)="cancelClick($event)" (change)="changeRoles(userRoleSelect, user)">
+        <option *ngFor="let role of userRoles"
+                [selected]="user.role === role"
+                [value]="role">{{role}}</option>
+      </select>
+    </div>
+  </div>
+</div>

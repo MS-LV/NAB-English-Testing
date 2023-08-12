@@ -117,10 +117,18 @@ small {
   align-items: center;
   cursor: pointer;
   text-transform: capitalize;
+  border-radius: .25rem;
+  outline: none;
+  border: none;
 }
 
 .dangerous-btn {
   background-color: #f44336;
   color: #fff;
-  border-radius: .25rem;
 }
+
+.primary-btn {
+  background-color: #3f51b5;
+  color: white;
+}
+

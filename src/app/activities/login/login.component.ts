@@ -74,8 +74,10 @@ export class LoginComponent {
     }
 
     private openSnackBar(data: AuthorizationMessage) {
+        const className = data.status === 'success' ? 'success' : 'error'
         this._snackBar.openFromComponent(SnackbarComponent, {
-            duration: this.durationInSeconds * 1000,
+            panelClass: [className],
+            duration: 5000,
             data
         });
     }

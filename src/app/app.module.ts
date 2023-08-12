@@ -29,7 +29,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {QuestionCardComponent} from "./activities/dictionary/question-cards/question-card.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import { EverydayDialogComponent } from './components/everyday-dialog/everyday-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 import { GrammarComponent } from './components/grammar/grammar.component';
@@ -41,6 +40,8 @@ import { SpeakingComponent } from './components/speaking/speaking.component';
 import { TestingDialogComponent } from './components/testing-dialog/testing-dialog.component';
 import { HistoryPopupComponent } from './activities/history/history-popup/history-popup.component';
 import { AdminComponent } from './activities/admin/admin.component';
+import {MatSelectModule} from "@angular/material/select";
+import { UserListComponent } from './activities/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,6 @@ import { AdminComponent } from './activities/admin/admin.component';
     HistoryComponent,
     ErrorComponent,
     QuestionCardComponent,
-    EverydayDialogComponent,
     GrammarComponent,
     ReadingComponent,
     ListeningComponent,
@@ -66,6 +66,7 @@ import { AdminComponent } from './activities/admin/admin.component';
     TestingDialogComponent,
     HistoryPopupComponent,
     AdminComponent,
+    UserListComponent,
   ],
     imports: [
         BrowserModule,
@@ -88,7 +89,8 @@ import { AdminComponent } from './activities/admin/admin.component';
         MatCardModule,
         MatSlideToggleModule,
         MatDialogModule,
-        MatTableModule
+        MatTableModule,
+        MatSelectModule
     ],
   providers: [
     ConfigService,

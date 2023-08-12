@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EverydayDialogComponent } from './everyday-dialog.component';
+import { UserListComponent } from './user-list.component';
 
-describe('DictionaryDialogComponent', () => {
-  let component: EverydayDialogComponent;
-  let fixture: ComponentFixture<EverydayDialogComponent>;
+describe('UserListComponent', () => {
+  let component: UserListComponent;
+  let fixture: ComponentFixture<UserListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EverydayDialogComponent ]
+      declarations: [ UserListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EverydayDialogComponent);
+    fixture = TestBed.createComponent(UserListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

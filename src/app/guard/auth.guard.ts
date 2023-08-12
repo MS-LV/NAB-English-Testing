@@ -1,19 +1,24 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
-import {Observable} from 'rxjs';
-import {HttpClient} from "@angular/common/http";
+import {map, Observable} from 'rxjs';
 import {HelperService} from "../services/helper.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private helper: HelperService) {
+  constructor(private helper: HelperService, private router: Router) {
   }
 
   canActivate(): Observable<boolean> | boolean {
     const accessToken = localStorage.getItem('accessToken');
-    return this.helper.checkUser();
+    return this.helper.checkUser().pipe(map((isAuth) => {
+      if (isAuth) {
+        return true;
+      }
+      this.router.navigate(['/login']).then();
+      return isAuth;
+    }));
   }
 
 }

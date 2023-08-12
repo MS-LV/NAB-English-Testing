@@ -1,19 +1,8 @@
-import {
-    Component,
-    ComponentFactoryResolver,
-    Input,
-    OnDestroy,
-    OnInit,
-    ViewChild,
-    ViewContainerRef
-} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EverydayService} from "./everyday.service";
 import {QuestionCardComponent} from "./question-cards/question-card.component";
 import {DictionariesQuestion} from "../../interface/dictionaries-question";
-import {MatDialog} from "@angular/material/dialog";
-import {EverydayDialogComponent} from "../../components/everyday-dialog/everyday-dialog.component";
-import {HelperService} from "../../services/helper.service";
 import {catchError, Observable, of, Subscription} from "rxjs";
 import {ConfigService} from "../../services/config.service";
 import {AuthorizationMessage} from "../../interface/login";
@@ -39,8 +28,7 @@ export class EverydayComponent implements OnInit, OnDestroy {
         public service: EverydayService,
         public config: ConfigService,
         private _snackBar: MatSnackBar,
-        private resolver: ComponentFactoryResolver,
-        private helper: HelperService
+        private resolver: ComponentFactoryResolver
     ) {
         this.studentInfo = new FormGroup({
             group: new FormControl('', [Validators.required]),
@@ -76,7 +64,7 @@ export class EverydayComponent implements OnInit, OnDestroy {
 
     openSnackBar(data: AuthorizationMessage) {
         this._snackBar.openFromComponent(SnackbarComponent, {
-            duration: 3000,
+            duration: 5000,
             data
         });
     }

@@ -2,11 +2,11 @@
   <h1 class="type">{{currentHistory.type}}</h1>
   <div class="test-info section">
     <div class="group">
-      <span class="title">Group: </span>
+      <span class="page-title">Group: </span>
       <span class="bold">{{currentHistory.group}}</span>
     </div>
     <div class="block">
-      <span class="title">Block: </span>
+      <span class="page-title">Block: </span>
       <span class="bold">{{currentHistory.block}}</span>
     </div>
   </div>
@@ -19,6 +19,7 @@
       <ng-container *ngIf="activity.correct;">
         <div>correct: {{activity.correct.length}}</div>
         <div>incorrect: {{activity.incorrect.length}}</div>
+        <div *ngIf="activity.ballScore">ball: {{activity.ballScore | number : '1.0-2'}}</div>
       </ng-container>
 
       <ng-container *ngIf="activity.type.toLowerCase() === 'writing'">
@@ -33,8 +34,8 @@
   </fieldset>
 
   <div class="score">
-    <div class="title">Score:</div>
-    <div class="score-item">{{currentHistory.score}}</div>
+    <div class="page-title">Balls:</div>
+    <div class="score-item">{{currentHistory.score | number : '1.0-2'}}</div>
   </div>
 </div>
 

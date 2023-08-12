@@ -30,6 +30,12 @@ const configs = {
   },
   get history() {
     return `${this.serverURL}/history`
+  },
+  get upload() {
+    return `${this.serverURL}/upload`;
+  },
+  get users() {
+    return `${this.serverURL}/users`;
   }
 };
 

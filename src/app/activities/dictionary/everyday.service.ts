@@ -1,9 +1,11 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {ConfigService} from "../../services/config.service";
-import {map, Observable, take} from "rxjs";
+import {map, Observable, take, tap} from "rxjs";
 import {DictionariesQuestion, DictionaryChecker} from "../../interface/dictionaries-question";
 import {HelperService} from "../../services/helper.service";
+import {Router} from "@angular/router";
+import {HistoryResponse} from "../../interface/history";
 
 @Injectable({providedIn: 'root'})
 export class EverydayService {
@@ -12,7 +14,8 @@ export class EverydayService {
   constructor(
     private config: ConfigService,
     private http: HttpClient,
-    private helper: HelperService) {
+    private helper: HelperService,
+    private router: Router) {
   }
 
   getDictationQuestion(block: string, group: string): Observable<DictionariesQuestion[]> {
@@ -33,12 +36,14 @@ export class EverydayService {
       );
   }
 
-  saveToHistory(body: DictionaryChecker, headers: HttpHeaders): Observable<any> {
+  saveToHistory(body: DictionaryChecker, headers: HttpHeaders): Observable<HistoryResponse> {
     const url = this.config.upConfig.everyday
     const {correct, incorrect, type} = body;
     const data = [{correct, incorrect, type}];
     const bodyParse = {data, group: this.testInfo.group, block: this.testInfo.block}
-    return this.http.post(url, bodyParse, {headers})
-      .pipe(take(1));
+    return this.http.post<HistoryResponse>(url, bodyParse, {headers})
+      .pipe(take(1), tap((history) => {
+        this.router.navigate(['/history', history._id]).then();
+      }));
   }
 }

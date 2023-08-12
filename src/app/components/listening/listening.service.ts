@@ -12,8 +12,8 @@ export class ListeningService {
     const slicedData = data.slice();
     slicedData.forEach(item => {
       const {answer} = item;
-      // item.description = item.description.replace(/\.+/gi, '_____')
-      const options = [...item.option.split(','), answer].sort((a, b) => Math.random() - 0.5);
+      item.description = item.description.replace(/\.+/gi, '_____')
+      const options = [...item.option.split(';'), answer].sort((a, b) => Math.random() - 0.5);
       item.options = options;
     });
     return slicedData;

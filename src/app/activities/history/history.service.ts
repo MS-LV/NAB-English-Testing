@@ -13,11 +13,12 @@ export class HistoryService {
               private config: ConfigService) {
   }
 
-  getHistory(): Observable<HistoryResponse[]> {
+  getHistory(user: string): Observable<HistoryResponse[]> {
     const url = this.config.upConfig.history;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.config.accessToken}`
+      'Authorization': `Bearer ${this.config.accessToken}`,
+      'user': user ?? ''
     });
     return this.http.get<HistoryResponse[]>(url, {headers})
   }

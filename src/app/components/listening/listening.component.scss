@@ -27,10 +27,21 @@
       }
     }
     .question {
-      .bold {
+      h3 {
         font-size: 20px;
         font-weight: bold;
+        margin: 0;
       }
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      column-gap: 20px;
+    }
+
+    .question-ball {
+      white-space: nowrap;
     }
   }
 }

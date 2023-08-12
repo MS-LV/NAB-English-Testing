@@ -10,6 +10,8 @@ export interface ConfigsInterface {
   history: string;
   deleteUser: string;
   serverConfig: string;
+  upload: string;
+  users: string;
 }
 
 export interface IUserInfo {

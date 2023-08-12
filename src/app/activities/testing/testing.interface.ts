@@ -1,7 +1,6 @@
 export interface GrammarQuestion {
   id: string;
   level: string;
-  type: string;
   block: string;
   description: string;
   answer: string;
@@ -17,7 +16,6 @@ export interface ReadingQuestion extends GrammarQuestion {
 export interface WritingQuestion {
   id: string;
   level: string;
-  type: string;
   block: string;
   theme: string;
 }

@@ -2,14 +2,22 @@
   display: flex;
 }
 
-.example-pizza-party {
+.description {
   color: white;
+  font-size: 20px;
+  letter-spacing: 1.2px;
 }
 
-.example-pizza-party.error {
-  color: #e57373;
+//.description.error {
+//  color: #e57373;
+//}
+//
+//.description.success {
+//  color: #81c784;
+//}
+::ng-deep .error .mdc-snackbar__surface {
+  background-color: #f44336;
 }
-
-.example-pizza-party.success {
-  color: #81c784;
+::ng-deep .success .mdc-snackbar__surface {
+  background-color: #4caf50;
 }

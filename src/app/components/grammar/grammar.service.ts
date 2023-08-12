@@ -20,7 +20,7 @@ export class GrammarService {
     slicedData.forEach(item => {
       const {answer} = item;
       item.description = item.description.replace(/_+/gi, '_____')
-      const options = [...item.option.split(','), answer].sort((a, b) => Math.random() - 0.5);
+      const options = [...item.option.split(';'), answer].sort((a, b) => Math.random() - 0.5);
       item.options = options;
     });
     return slicedData;

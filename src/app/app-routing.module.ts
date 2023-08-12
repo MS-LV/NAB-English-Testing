@@ -12,11 +12,15 @@ import {HistoryPopupComponent} from "./activities/history/history-popup/history-
 import {IsStudentGuard} from "./guard/is-student.guard";
 import {AdminComponent} from "./activities/admin/admin.component";
 import {IsAdminGuard} from "./guard/is-admin.guard";
+import {TestingPageGuard} from "./guard/testing-page.guard";
+import {UserListComponent} from "./activities/user-list/user-list.component";
+import {UserListGuard} from "./guard/user-list.guard";
 
 const routes: Routes = [
   {path: '', redirectTo: '/dictionary', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard, IsAdminGuard]},
-  {path: 'testing', component: TestingComponent, canActivate: [AuthGuard, IsStudentGuard]},
+  {path: 'user-list', component: UserListComponent, canActivate: [AuthGuard, UserListGuard]},
+  {path: 'testing', component: TestingComponent, canActivate: [AuthGuard, IsStudentGuard, TestingPageGuard]},
   {path: 'dictionary', component: EverydayComponent, canActivate: [AuthGuard, IsStudentGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'history', component: HistoryComponent, canActivate: [AuthGuard]},

@@ -67,6 +67,10 @@ mat-sidenav-content {
   background-color: transparent !important;
 }
 
+mat-sidenav-container ::ng-deep mat-sidenav-content {
+  overflow-y: hidden;
+}
+
 @media (max-width: 768px) {
   .navbar-small-screen {
     display: flex;

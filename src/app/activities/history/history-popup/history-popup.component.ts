@@ -40,9 +40,11 @@ export class HistoryPopupComponent {
   ngOnInit() {
   }
 
-  openSnackBar(data: AuthorizationMessage) {
+  private openSnackBar(data: AuthorizationMessage) {
+    const className = data.status === 'success' ? 'success' : 'error'
     this._snackBar.openFromComponent(SnackbarComponent, {
-      duration: 3000,
+      panelClass: [className],
+      duration: 5000,
       data
     });
   }

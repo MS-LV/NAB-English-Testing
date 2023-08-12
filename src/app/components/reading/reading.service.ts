@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {GrammarQS} from "../../interface/testing";
 
 @Injectable({
@@ -6,16 +6,18 @@ import {GrammarQS} from "../../interface/testing";
 })
 export class ReadingService {
 
-  constructor() { }
+  constructor() {
+  }
 
   formatArray(data: any[]): GrammarQS[] {
     const slicedData = data.slice();
     slicedData.forEach(item => {
       const {answer} = item;
-      item.description = item.description.replace(/_+/gi, '_____')
-      const options = [...item.option.split(','), answer].sort((a, b) => Math.random() - 0.5);
+      item.description = item.description.replace(/_+/gi, '_____');
+      const options = [...item.option.split(';'), answer].sort((a, b) => Math.random() - 0.5);
       item.options = options;
     });
     return slicedData;
   }
+
 }

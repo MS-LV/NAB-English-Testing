@@ -32,7 +32,10 @@
     correct: false,
     incorrect: false
     }" class="question">
-      <h3 class="bold">{{idx + 1}}. {{ question.description }}</h3>
+      <div class="question-header">
+        <h3 class="question-title">{{idx + 1}}. {{ question.description }}</h3>
+        <div class="question-ball">2 Ball</div>
+      </div>
       <mat-radio-group [formControlName]="idx">
         <mat-radio-button
           *ngFor="let variant of question.options"

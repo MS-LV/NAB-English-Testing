@@ -1,12 +1,12 @@
 import {ConfigsInterface, IServerConfig, IUserInfo} from "../interface/configs";
-import {Observable, take} from "rxjs";
+import {Observable, take, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
+import {HelperService} from "./helper.service";
 
 @Injectable()
 export class ConfigService {
   upConfig!: ConfigsInterface;
-  private _private: IUserInfo;
 
   constructor(private http: HttpClient) {
     this.init();

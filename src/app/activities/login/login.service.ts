@@ -41,9 +41,7 @@ export class LoginService {
   login(body: LoginControls): Observable<AuthorizationMessage> {
     const url = this.config.upConfig.loginURL;
     return this.http.post<AuthorizationData>(url, body, {
-      observe: 'response',
-      withCredentials: true
-    })
+      observe: 'response'})
       .pipe(
         take(1),
         map((response: HttpResponse<AuthorizationData>) => {

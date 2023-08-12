@@ -42,7 +42,6 @@ export class ReadingComponent implements OnInit {
   }
 
   private loadQuestions() {
-    this.questions.length = 5;
     const questions = this.service.formatArray(this.questions);
     for (let i = 0; i < questions.length; i++) {
       this.questionArray.push(new FormControl('', Validators.required));

@@ -1,3 +1,9 @@
+:host {
+  display: block;
+  overflow-y: auto;
+  height: calc(100% - 56px);
+}
+
 .masthead {
   padding: 15em 0;
   background-image: url("https://i.imgur.com/D4rA84W.jpg");
