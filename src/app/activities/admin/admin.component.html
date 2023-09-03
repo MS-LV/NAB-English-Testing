@@ -2,10 +2,10 @@
 <div class="title bold">
   Configs
 </div>
-<div *ngIf="serverConfig" class="configs section">
+<div *ngIf="config.serverConfig" class="configs section">
   <div class="configs-item">
-    <div class="configs-title">Exam is <span class="bold">{{serverConfig.isExam ? 'ON' : 'OFF'}}</span></div>
-    <mat-slide-toggle *ngIf="serverConfig" color="primary" [(ngModel)]="serverConfig.isExam"
+    <div class="configs-title">Exam is <span class="bold">{{config.serverConfig.isExam ? 'ON' : 'OFF'}}</span></div>
+    <mat-slide-toggle *ngIf="config.serverConfig" color="primary" [(ngModel)]="config.serverConfig.isExam"
                       (ngModelChange)="changeOptions()">
     </mat-slide-toggle>
   </div>
@@ -29,6 +29,14 @@
              (change)="inputChange(listening)"
              formControlName="listening"
              #listening
+             accept=".xlsx, .xls, .csv">
+    </div>
+    <div class="reading">
+      <label for="reading">reading</label>
+      <input id="reading" type="file" name="reading"
+             (change)="inputChange(reading)"
+             formControlName="reading"
+             #reading
              accept=".xlsx, .xls, .csv">
     </div>
     <div class="grammar">

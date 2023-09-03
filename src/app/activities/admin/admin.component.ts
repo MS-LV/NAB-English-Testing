@@ -17,11 +17,10 @@ import {IQuestionList} from "./admin.interface";
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  serverConfig: IServerConfig;
   uploadForm: FormGroup;
   jsonContent: IQuestionList[] = [];
 
-  constructor(private config: ConfigService,
+  constructor(public config: ConfigService,
               private _snackBar: MatSnackBar,
               private fb: FormBuilder,
               private service: AdminService) {
@@ -32,33 +31,26 @@ export class AdminComponent implements OnInit {
       dictionary: [''],
       listening: [''],
       grammar: [''],
+      reading: [''],
       writing: ['']
     });
-    const serverConfigs = this.config.serverConfig()
+    const serverConfigs = this.config.getServerConfig()
       .pipe(
         catchError((err: HttpErrorResponse) => {
           return this.errorHandler(err)
         })
       )
-      .subscribe((configs) => {
-        if (configs) {
-          this.serverConfig = configs;
-        }
-      });
+      .subscribe();
   }
 
   changeOptions() {
-    this.config.updateServerConfig(this.serverConfig)
+    this.config.updateServerConfig()
       .pipe(
         catchError((err: HttpErrorResponse) => {
           return this.errorHandler(err)
         })
       )
-      .subscribe((configs) => {
-        if (configs) {
-          this.serverConfig = configs;
-        }
-      });
+      .subscribe();
   }
 
   inputChange(input: HTMLInputElement) {

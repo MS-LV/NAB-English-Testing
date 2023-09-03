@@ -7,6 +7,7 @@ import {AuthorizationMessage} from "../../interface/login";
 import {Router} from "@angular/router";
 import {catchError, Observable, of} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
+import {ConfigService} from "../../services/config.service";
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent {
   constructor(
     private _snackBar: MatSnackBar,
     private service: LoginService,
-    private route: Router
+    private route: Router,
+    private config:ConfigService
   ) {
     this.registrationForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -40,12 +42,14 @@ export class LoginComponent {
   }
 
   submit(isLogin: boolean) {
+    console.log('submit')
     if (isLogin) {
       this.service.login(this.logInForm.value)
         .pipe(catchError((err: HttpErrorResponse) => {
           return this.errorHandler(err);
         }))
         .subscribe((message) => {
+          console.log(message);
           if (!message) {
           }
           this.openSnackBar(message);

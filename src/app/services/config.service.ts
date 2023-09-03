@@ -1,11 +1,12 @@
 import {ConfigsInterface, IServerConfig, IUserInfo} from "../interface/configs";
-import {Observable, take} from "rxjs";
+import {Observable, take, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 
 @Injectable()
 export class ConfigService {
   upConfig!: ConfigsInterface;
+  serverConfig: IServerConfig;
 
   constructor(private http: HttpClient) {
     this.init();
@@ -16,22 +17,28 @@ export class ConfigService {
     this.upConfig = window.upConfig;
   }
 
-  serverConfig(): Observable<IServerConfig> {
+  getServerConfig(): Observable<IServerConfig> {
     const url = this.upConfig.serverConfig;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.accessToken}`
     });
-    return this.http.get<IServerConfig>(url, {headers}).pipe(take(1));
+    return this.http.get<IServerConfig>(url, {headers})
+      .pipe(
+        take(1),
+        tap((configs) => {
+          this.serverConfig = configs;
+        })
+      );
   }
 
-  updateServerConfig(data: IServerConfig): Observable<IServerConfig> {
+  updateServerConfig(): Observable<IServerConfig> {
     const url = this.upConfig.serverConfig;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.accessToken}`
     });
-    return this.http.put<IServerConfig>(url, data, {headers}).pipe(take(1));
+    return this.http.put<IServerConfig>(url, this.serverConfig, {headers}).pipe(take(1));
   }
 
   get userInfo(): IUserInfo {

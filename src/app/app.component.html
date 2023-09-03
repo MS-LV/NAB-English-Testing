@@ -8,7 +8,7 @@
 
   <nav class="navbar mat-toolbar mat-primary" [ngClass]="{ 'navbar-small-screen': device === 'mobile' }">
     <ng-container *ngIf="isAuthorized && config.userInfo.role === 'STUDENT'">
-      <a *ngIf="serverConfig && serverConfig.isExam" mat-button routerLink="/testing"
+      <a *ngIf="config.serverConfig && config.serverConfig.isExam" mat-button routerLink="/testing"
          routerLinkActive="active">Testing</a>
       <a mat-button routerLink="/dictionary" routerLinkActive="active">Dictionary</a>
     </ng-container>

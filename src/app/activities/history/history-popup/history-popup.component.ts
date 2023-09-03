@@ -33,6 +33,7 @@ export class HistoryPopupComponent {
       .subscribe((item) => {
         if (item) {
           this.currentHistory = item;
+          console.log(item)
         }
       });
   }

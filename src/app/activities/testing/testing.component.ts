@@ -1,4 +1,4 @@
-import {Component, ElementRef} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ConfigService} from "../../services/config.service";
 import {TestingService} from "./testing.service";
@@ -13,10 +13,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './testing.component.html',
   styleUrls: ['./testing.component.scss', '../../components/styles/questions.scss']
 })
-export class TestingComponent {
+export class TestingComponent implements OnInit {
   testingInfo: FormGroup = new FormGroup({
-    group: new FormControl('web', [Validators.required]),
-    block: new FormControl('A', [Validators.required])
+    group: new FormControl('', [Validators.required]),
+    block: new FormControl('', [Validators.required])
   });
   page = '';
   blocks: string[] = ['A', 'B', 'C'];
@@ -31,6 +31,10 @@ export class TestingComponent {
               private _snackBar: MatSnackBar,
               private element: ElementRef) {
     // this.startTestingSubmit();
+  }
+
+  ngOnInit() {
+    this.service.saveData = [];
   }
 
   startTestingSubmit() {

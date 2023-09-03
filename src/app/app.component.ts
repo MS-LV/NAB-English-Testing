@@ -54,13 +54,11 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       });
 
-    this.config.serverConfig()
+    this.config.getServerConfig()
       .pipe(catchError((err: HttpErrorResponse) => {
         return this.errorHandler(err);
       }))
-      .subscribe((config) => {
-        this.serverConfig = config;
-      });
+      .subscribe();
     this.observable.push(isAuthorized, checkUser);
     this.helper.setAuthStatus(false);
   }

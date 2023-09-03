@@ -1,4 +1,24 @@
 <mat-tab-group dynamicHeight>
+  <mat-tab label="log In">
+    <form class="example-form" [formGroup]="logInForm" (ngSubmit)="submit(true)">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter your email">
+        <mat-error *ngIf="logInForm.get('email')!.hasError('required')">Email is required.</mat-error>
+        <mat-error *ngIf="logInForm.get('email')!.hasError('email')">Invalid email format.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" placeholder="Enter your password" autocomplete="off" type="password">
+        <mat-error *ngIf="logInForm.get('password')!.hasError('required')">Password is required.</mat-error>
+      </mat-form-field>
+      <div class="submit">
+        <button type="reset" mat-raised-button color="warn" [disabled]="!logInForm.dirty">Clear</button>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="logInForm.invalid">Submit</button>
+      </div>
+    </form>
+  </mat-tab>
+
   <mat-tab label="Registration">
     <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="submit(false)">
       <mat-form-field class="example-full-width" appearance="fill">
@@ -46,26 +66,6 @@
         <button type="reset" mat-raised-button color="warn" [disabled]="!registrationForm.dirty">Clear</button>
         <button class="submit-btn" mat-raised-button color="primary" [disabled]="registrationForm.invalid">Submit
         </button>
-      </div>
-    </form>
-  </mat-tab>
-
-  <mat-tab label="log In">
-    <form class="example-form" [formGroup]="logInForm" (ngSubmit)="submit(true)">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" placeholder="Enter your email">
-        <mat-error *ngIf="logInForm.get('email')!.hasError('required')">Email is required.</mat-error>
-        <mat-error *ngIf="logInForm.get('email')!.hasError('email')">Invalid email format.</mat-error>
-      </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput formControlName="password" placeholder="Enter your password" autocomplete="off" type="password">
-        <mat-error *ngIf="logInForm.get('password')!.hasError('required')">Password is required.</mat-error>
-      </mat-form-field>
-      <div class="submit">
-        <button type="reset" mat-raised-button color="warn" [disabled]="!logInForm.dirty">Clear</button>
-        <button class="submit-btn" mat-raised-button color="primary" [disabled]="logInForm.invalid">Submit</button>
       </div>
     </form>
   </mat-tab>

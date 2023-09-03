@@ -12,7 +12,7 @@ export class TestingPageGuard implements CanActivate {
   }
 
   canActivate(): Observable<boolean> {
-    return this.config.serverConfig().pipe(
+    return this.config.getServerConfig().pipe(
       map((config) => {
         if (config.isExam) {
           return true;

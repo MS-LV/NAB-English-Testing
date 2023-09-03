@@ -17,7 +17,7 @@ import {UserListComponent} from "./activities/user-list/user-list.component";
 import {UserListGuard} from "./guard/user-list.guard";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/dictionary', pathMatch: 'full'},
+  {path: '', redirectTo: 'dictionary', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard, IsAdminGuard]},
   {path: 'user-list', component: UserListComponent, canActivate: [AuthGuard, UserListGuard]},
   {path: 'testing', component: TestingComponent, canActivate: [AuthGuard, IsStudentGuard, TestingPageGuard]},
@@ -31,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

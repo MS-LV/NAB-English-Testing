@@ -19,8 +19,8 @@ export class UserListComponent {
   userRoles = ['STUDENT', 'TEACHER', 'ADMIN'];
   userLevel = ['beginner', 'elementary', 'pre intermediate', 'upper intermediate', 'advanced'];
 
-  constructor(private service: UserListService,
-              private config: ConfigService,
+  constructor(public config: ConfigService,
+              private service: UserListService,
               private helper: HelperService,
               private _snackBar: MatSnackBar,) {
     this.service.getUsersList()
@@ -42,6 +42,9 @@ export class UserListComponent {
       }
     }
     this.service.updateUser(user)
+      .pipe(catchError((err: HttpErrorResponse) => {
+        return this.errorHandler(err);
+      }))
       .subscribe(next => {
         if (this.config.userInfo.id === user._id) {
           this.helper.userLogout();
