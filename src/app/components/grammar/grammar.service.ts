@@ -1,19 +1,18 @@
 import {Injectable} from '@angular/core';
 import {GrammarQS} from '../../interface/testing';
-import {HttpClient} from "@angular/common/http";
-import {ConfigService} from "../../services/config.service";
+import {HelperService} from "../../services/helper.service";
+import {GrammarQuestion} from "../../activities/testing/testing.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GrammarService {
 
-  constructor(private config: ConfigService,
-              private http: HttpClient) {
+  constructor(private helper: HelperService) {
   }
 
-  formatArray(data: any[]): GrammarQS[] {
-    const slicedData = data.slice();
+  formatArray(data: GrammarQuestion[]): GrammarQuestion[] {
+    const slicedData = this.helper.shuffleArray(data.slice());
     slicedData.forEach(item => {
       const {answer} = item;
       item.description = item.description.replace(/_+/gi, '_____')

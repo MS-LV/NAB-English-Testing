@@ -5,7 +5,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "./login.service";
 import {AuthorizationMessage} from "../../interface/login";
 import {Router} from "@angular/router";
-import {catchError, Observable, of} from "rxjs";
+import {catchError, mergeMap, Observable, of, tap} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ConfigService} from "../../services/config.service";
 
@@ -47,12 +47,13 @@ export class LoginComponent {
       this.service.login(this.logInForm.value)
         .pipe(catchError((err: HttpErrorResponse) => {
           return this.errorHandler(err);
+        }), mergeMap((message) => {
+          if (message) {
+            this.openSnackBar(message);
+          }
+          return this.config.getServerConfig();
         }))
         .subscribe((message) => {
-          console.log(message);
-          if (!message) {
-          }
-          this.openSnackBar(message);
           this.route.navigate(['/profile']).then();
         })
     } else {

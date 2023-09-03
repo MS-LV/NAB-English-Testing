@@ -59,6 +59,9 @@ html, body {
 
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 

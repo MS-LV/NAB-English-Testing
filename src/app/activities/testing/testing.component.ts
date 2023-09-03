@@ -15,14 +15,14 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class TestingComponent implements OnInit {
   testingInfo: FormGroup = new FormGroup({
-    group: new FormControl('', [Validators.required]),
-    block: new FormControl('', [Validators.required])
+    group: new FormControl('web', [Validators.required]),
+    block: new FormControl('A', [Validators.required])
   });
   page = '';
   blocks: string[] = ['A', 'B', 'C'];
   date = new Date();
-  testSteps = ['grammar', 'reading', 'listening', 'dictionary', 'writing'];
-  // testSteps = ['dictionary', 'writing'];
+  // testSteps = ['grammar', 'reading', 'listening', 'dictionary', 'writing'];
+  testSteps = ['grammar', 'reading',   'writing'];
 
   private idxCard = 0;
 
@@ -30,7 +30,7 @@ export class TestingComponent implements OnInit {
               public service: TestingService,
               private _snackBar: MatSnackBar,
               private element: ElementRef) {
-    // this.startTestingSubmit();
+    this.startTestingSubmit();
   }
 
   ngOnInit() {

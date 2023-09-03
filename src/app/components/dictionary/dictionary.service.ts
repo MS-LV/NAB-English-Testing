@@ -1,16 +1,16 @@
 import {Injectable} from '@angular/core';
-import {DictionaryQS} from "../../interface/testing";
+import {HelperService} from "../../services/helper.service";
+import {DictionariesQuestion} from "../../interface/dictionaries-question";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DictionaryService {
 
-  constructor() {
+  constructor(private helper: HelperService) {
   }
 
-  formatArray(data: any[]): DictionaryQS[] {
-    const slicedData = data.slice();
-    return slicedData;
+  formatArray(data: DictionariesQuestion[]): DictionariesQuestion[] {
+    return this.helper.shuffleArray(data.slice());
   }
 }

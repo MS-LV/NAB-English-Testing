@@ -36,6 +36,10 @@ export class AppComponent implements OnInit, OnDestroy {
   init() {
     this.device = this.config.deviceType;
     this.elementNative.classList.add(this.device);
+    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    if (iOS) {
+      this.elementNative.classList.add('nab-ios');
+    }
   }
 
   toggleMenu(): void {

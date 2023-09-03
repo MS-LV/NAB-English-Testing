@@ -13,7 +13,7 @@ import {DictionariesQuestion} from "../../interface/dictionaries-question";
 })
 export class DictionaryComponent implements OnInit {
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
-  @Input() questions: DictionariesQuestion[] | any[]
+  @Input() questions: DictionariesQuestion[] | any[];
   questionForm: FormGroup = new FormGroup({
     questions: new FormArray([])
   });

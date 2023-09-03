@@ -1,4 +1,12 @@
-
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #E3F2FD;
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
 .demo-table {
   width: 100%;
   position: relative;
@@ -60,6 +68,8 @@
 }
 
 .thead {
+  position: sticky;
+  top: 0;
   background-color: #3f51b5;
   color: white;
   gap: 20px;

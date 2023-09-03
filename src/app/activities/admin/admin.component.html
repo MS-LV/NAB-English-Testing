@@ -13,7 +13,7 @@
 <div class="title bold">Upload Excel Files</div>
 <div class="section">
   <form class="file-uploader" action="http://localhost:5000/upload/" [formGroup]="uploadForm"
-        (ngSubmit)="onSubmit([dictionary, listening, grammar, writing])" method="POST"
+        (ngSubmit)="onSubmit([grammar, reading, listening, dictionary, writing])" method="POST"
         enctype="multipart/form-data">
     <div class="dictionary">
       <label for="dictionary">dictionary</label>

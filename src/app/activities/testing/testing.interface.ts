@@ -5,12 +5,14 @@ export interface GrammarQuestion {
   description: string;
   answer: string;
   option: string;
+  options: string[]
 }
 
 export interface ListeningQuestions extends GrammarQuestion {
 }
 
 export interface ReadingQuestion extends GrammarQuestion {
+  text: string;
 }
 
 export interface WritingQuestion {

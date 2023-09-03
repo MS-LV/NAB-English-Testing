@@ -1,8 +1,14 @@
 :host {
   position: relative;
-  top: 0;
   height: 100%;
+  width: 100%;
   display: block;
+  &.nab-ios {
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
 
 .toolbar-wrapper {
@@ -67,8 +73,10 @@ mat-sidenav-content {
   background-color: transparent !important;
 }
 
-mat-sidenav-container ::ng-deep mat-sidenav-content {
-  overflow-y: hidden;
+mat-sidenav-container ::ng-deep {
+  mat-sidenav-content {
+    overflow-y: hidden;
+  }
 }
 
 @media (max-width: 768px) {
@@ -93,13 +101,13 @@ mat-sidenav-content {
 }
 
 .toolbar-wrapper {
-  position: fixed;
-  top: 0;
+  position: relative;
+  top: 0px;
   left: 0;
   width: 100%;
   z-index: 3;
 }
 
 mat-sidenav-container {
-  top: 56px;
+  //top: 56px;
 }

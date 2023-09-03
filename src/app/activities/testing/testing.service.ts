@@ -49,11 +49,10 @@ export class TestingService {
       .pipe(
         take(1),
         tap((item) => {
-          const shuffleArray = this.helper.shuffleArray(item as any[]);
-          if (shuffleArray.length > 20) {
-            shuffleArray.length = 20;
+          if (item.length > 20) {
+            item.length = 20;
           }
-          this.currentCard = shuffleArray
+          this.currentCard = item
         })
       )
   }

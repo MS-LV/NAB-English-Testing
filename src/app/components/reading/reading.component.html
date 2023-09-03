@@ -4,26 +4,18 @@
     <img class="responsive-img" src="assets/images/english-level-{{config.userInfo.userLevel}}.png" alt="">
   </div>
   <div class="testing__descriptions">
-    <h1 class="description__header">English {{config.userInfo.userLevel | titlecase}} Test - Version - A
+    <h1 class="description__header">English {{config.userInfo.userLevel | titlecase}} Test - Version
+      - {{testingService.testInfo.block}}
       (NAB)</h1>
+  </div>
+  <div class="card__img">
+    <img src="assets/images/reading-section.png" alt="reading-section-img">
   </div>
   <div class="question-card">
     <div class="card-header">Reading section</div>
     <div class="card-description">Read the text and answer question about them</div>
   </div>
-
-  <div class="card__img">
-    <img src="assets/images/reading-section.png" alt="reading-section-img">
-  </div>
-  <div class="reading-text card__img">
-    <h3>Reading the text answer the question 1 - 5</h3>
-    <img src="assets/images/reading-text-{{config.userInfo.userLevel}}-1.png" fill>
-  </div>
-  <div class="reading-text card__img">
-    <h3>Reading the text answer the question 1 - 5</h3>
-    <img src="assets/images/reading-text-{{config.userInfo.userLevel}}-2.png">
-    <!--  <img src="assets/images/reading-text-beginner-1.png">-->
-  </div>
+  <div class="reading-text" [innerHTML]="readingText"></div>
   <ng-container formArrayName="questions">
     <div *ngFor="let question of questions; let idx = index"
          [ngClass]="{
