@@ -25,7 +25,7 @@ export class LoginComponent {
     private _snackBar: MatSnackBar,
     private service: LoginService,
     private route: Router,
-    private config:ConfigService
+    private config: ConfigService
   ) {
     this.registrationForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
