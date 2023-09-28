@@ -25,7 +25,7 @@
     }">
       <div class="question-header">
         <h3 class="question-title">{{idx + 1}}. {{ question.description }}</h3>
-        <div class="question-ball">1 Ball</div>
+        <div class="question-ball">{{20 / questions.length | number:'1.0-0'}} Ball</div>
       </div>
       <mat-radio-group [formControlName]="idx">
         <mat-radio-button

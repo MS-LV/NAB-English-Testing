@@ -18,6 +18,9 @@ export class ListeningService {
       const options = [...item.option.split(';'), answer].sort((a, b) => Math.random() - 0.5).map(item => item.trim());
       item.options = options;
     });
+    if (slicedData.length > 20) {
+      slicedData.length = 20;
+    }
     return slicedData;
   }
 }

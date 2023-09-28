@@ -30,7 +30,7 @@
         <mat-card-title>
           <h3 class="question-title"> {{idx + 1}}. {{question.tajik}} - {{question.russian}}</h3>
         </mat-card-title>
-        <div class="question-ball">1 Ball</div>
+        <div class="question-ball">{{20 / questions.length | number:'1.0-0'}} Ball</div>
       </mat-card-header>
 
       <mat-card-content>

@@ -1,67 +1,83 @@
 <h1 class="page-title">Admin Panel</h1>
 <div class="title bold">
-  Configs
+    Configs
 </div>
-<div *ngIf="config.serverConfig" class="configs section">
-  <div class="configs-item">
-    <div class="configs-title">Exam is <span class="bold">{{config.serverConfig.isExam ? 'ON' : 'OFF'}}</span></div>
-    <mat-slide-toggle *ngIf="config.serverConfig" color="primary" [(ngModel)]="config.serverConfig.isExam"
-                      (ngModelChange)="changeOptions()">
-    </mat-slide-toggle>
-  </div>
+<div *ngIf="config.serverConfig" class="configs section" [formGroup]="configForm">
+    <div class="configs-item">
+        <div class="configs-title">Exam is <span class="bold">{{config.serverConfig.isExam ? 'ON' : 'OFF'}}</span></div>
+        <mat-slide-toggle formControlName="isExam" color="primary" [(ngModel)]="config.serverConfig.isExam"
+                          (ngModelChange)="changeOptions()">
+        </mat-slide-toggle>
+    </div>
+    <div class="configs-item">
+        <div class="configs-title"><i class="fa-solid fa-clock orange-text"></i> Dictionary expired time</div>
+        <mat-slider class="time-expired-slider" min="300000" max="900000"
+                    step="60000" showTickMarks
+                    discrete [displayWith]="formatLabel">
+            <input [(ngModel)]="config.serverConfig.dictionaryExpired" formControlName="dictionaryExpired" (change)="changeOptions()" matSliderThumb>
+        </mat-slider>
+    </div>
+    <div class="configs-item">
+        <div class="configs-title"><i class="fa-solid fa-clock orange-text"></i> Exam expired time</div>
+        <mat-slider class="time-expired-slider" min="1200000" max="4200000" step="60000"
+                    showTickMarks
+                    discrete [displayWith]="formatLabel">
+            <input [(ngModel)]="config.serverConfig.examExpired" formControlName="examExpired" (mouseleave)="changeOptions()" (change)="changeOptions()" matSliderThumb>
+        </mat-slider>
+    </div>
 </div>
 <div class="title bold">Upload Excel Files</div>
 <div class="section">
-  <form class="file-uploader" action="http://localhost:5000/upload/" [formGroup]="uploadForm"
-        (ngSubmit)="onSubmit([grammar, reading, listening, dictionary, writing])" method="POST"
-        enctype="multipart/form-data">
-    <div class="dictionary">
-      <label for="dictionary">dictionary</label>
-      <input id="dictionary" type="file" name="dictionary"
-             (change)="inputChange(dictionary)"
-             formControlName="dictionary"
-             #dictionary
-             accept=".xlsx, .xls, .csv">
-    </div>
-    <div class="listening">
-      <label for="listening">listening</label>
-      <input id="listening" type="file" name="listening"
-             (change)="inputChange(listening)"
-             formControlName="listening"
-             #listening
-             accept=".xlsx, .xls, .csv">
-    </div>
-    <div class="reading">
-      <label for="reading">reading</label>
-      <input id="reading" type="file" name="reading"
-             (change)="inputChange(reading)"
-             formControlName="reading"
-             #reading
-             accept=".xlsx, .xls, .csv">
-    </div>
-    <div class="grammar">
-      <label for="grammar">grammar</label>
-      <input id="grammar" type="file" name="grammar"
-             (change)="inputChange(grammar)"
-             formControlName="grammar"
-             #grammar
-             accept=".xlsx, .xls, .csv">
-    </div>
-    <div class="writing">
-      <label for="writing">writing</label>
-      <input id="writing" type="file" name="writing"
-             (change)="inputChange(writing)"
-             formControlName="writing"
-             #writing
-             accept=".xlsx, .xls, .csv">
-    </div>
+    <form class="file-uploader" action="http://localhost:5000/upload/" [formGroup]="uploadForm"
+          (ngSubmit)="onSubmit([grammar, reading, listening, dictionary, writing])" method="POST"
+          enctype="multipart/form-data">
+        <div class="dictionary">
+            <label for="dictionary">dictionary</label>
+            <input id="dictionary" type="file" name="dictionary"
+                   (change)="inputChange(dictionary)"
+                   formControlName="dictionary"
+                   #dictionary
+                   accept=".xlsx, .xls, .csv">
+        </div>
+        <div class="listening">
+            <label for="listening">listening</label>
+            <input id="listening" type="file" name="listening"
+                   (change)="inputChange(listening)"
+                   formControlName="listening"
+                   #listening
+                   accept=".xlsx, .xls, .csv">
+        </div>
+        <div class="reading">
+            <label for="reading">reading</label>
+            <input id="reading" type="file" name="reading"
+                   (change)="inputChange(reading)"
+                   formControlName="reading"
+                   #reading
+                   accept=".xlsx, .xls, .csv">
+        </div>
+        <div class="grammar">
+            <label for="grammar">grammar</label>
+            <input id="grammar" type="file" name="grammar"
+                   (change)="inputChange(grammar)"
+                   formControlName="grammar"
+                   #grammar
+                   accept=".xlsx, .xls, .csv">
+        </div>
+        <div class="writing">
+            <label for="writing">writing</label>
+            <input id="writing" type="file" name="writing"
+                   (change)="inputChange(writing)"
+                   formControlName="writing"
+                   #writing
+                   accept=".xlsx, .xls, .csv">
+        </div>
 
-    <div class="single">
-      <button class="btn" type="submit" [class.touched]="!uploadForm.pristine">
-        Upload Files
-      </button>
-    </div>
-  </form>
+        <div class="single">
+            <button class="btn" type="submit" [class.touched]="!uploadForm.pristine">
+                Upload Files
+            </button>
+        </div>
+    </form>
 </div>
 
 

@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ConfigService} from "../../services/config.service";
 import {TestingService} from "./testing.service";
-import {catchError, Observable, of} from "rxjs";
+import {catchError, delay, interval, Observable, of, takeWhile, tap} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AuthorizationMessage} from "../../interface/login";
 import {SnackbarComponent} from "../../components/snackbar/snackbar.component";
@@ -15,14 +15,15 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class TestingComponent implements OnInit {
   testingInfo: FormGroup = new FormGroup({
-    group: new FormControl('web', [Validators.required]),
-    block: new FormControl('A', [Validators.required])
+    group: new FormControl('', [Validators.required]),
+    block: new FormControl('', [Validators.required])
   });
   page = '';
   blocks: string[] = ['A', 'B', 'C'];
   date = new Date();
-  // testSteps = ['grammar', 'reading', 'listening', 'dictionary', 'writing'];
-  testSteps = ['grammar', 'reading',   'writing'];
+  testSteps = ['grammar', 'reading', 'listening', 'dictionary', 'writing'];
+  // testSteps = ['reading', 'reading', 'writing'];
+  expiredTime = this.config.serverConfig.examExpired;
 
   private idxCard = 0;
 
@@ -30,7 +31,7 @@ export class TestingComponent implements OnInit {
               public service: TestingService,
               private _snackBar: MatSnackBar,
               private element: ElementRef) {
-    this.startTestingSubmit();
+    // this.startTestingSubmit();
   }
 
   ngOnInit() {
@@ -38,6 +39,15 @@ export class TestingComponent implements OnInit {
   }
 
   startTestingSubmit() {
+    this.loadNextCards();
+    this.startTimer();
+  }
+
+  onSubmitCards(evt: any) {
+    this.loadNextCards();
+  }
+
+  private loadNextCards() {
     const {block, group} = this.testingInfo.value;
     this.service.loadCard(this.testSteps[this.idxCard], block, group)
       .pipe(catchError((err: HttpErrorResponse) => {
@@ -49,13 +59,9 @@ export class TestingComponent implements OnInit {
       });
   }
 
-  changePage() {
+  private changePage() {
     this.page = this.testSteps[this.idxCard];
     this.idxCard++;
-  }
-
-  onSubmitCards(evt: any) {
-    this.startTestingSubmit();
   }
 
   private openSnackBar(data: AuthorizationMessage) {
@@ -80,5 +86,22 @@ export class TestingComponent implements OnInit {
     err.error.status = 'error';
     this.openSnackBar(err.error);
     return of();
+  }
+
+  private startTimer() {
+    interval(1000)
+      .pipe(
+        tap(() => {
+          if (this.expiredTime / 60000 <= 0) {
+            const message: AuthorizationMessage = {message: 'Time Expired', status: 'error'}
+            this.openSnackBar(message);
+            this.service.saveHistory(true).subscribe();
+          }
+        }),
+        takeWhile((num) => this.expiredTime > 0)
+      )
+      .subscribe(() => {
+        this.expiredTime -= 1000;
+      });
   }
 }

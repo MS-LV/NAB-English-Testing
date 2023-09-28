@@ -11,6 +11,10 @@ export class DictionaryService {
   }
 
   formatArray(data: DictionariesQuestion[]): DictionariesQuestion[] {
-    return this.helper.shuffleArray(data.slice());
+    const slicedData = this.helper.shuffleArray(data.slice());
+    if (slicedData.length > 20) {
+      slicedData.length = 20;
+    }
+    return slicedData;
   }
 }

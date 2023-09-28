@@ -57,7 +57,7 @@ export class TestingService {
       )
   }
 
-  saveHistory(): Observable<any> {
+  saveHistory(isExpired = false): Observable<any> {
     const url = this.config.upConfig.history;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -66,10 +66,10 @@ export class TestingService {
     const body = {
       ...this.testInfo,
       data: this.saveData,
-      correct: [],
-      incorrect: [],
-      type: 'exam'
+      type: 'exam',
+      isExpired
     }
+    console.log('isExpired: ', isExpired);
     return this.http.post<HistoryResponse>(url, body, {headers})
       .pipe(
         take(1),

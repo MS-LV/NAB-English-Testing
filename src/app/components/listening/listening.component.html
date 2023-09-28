@@ -13,7 +13,8 @@
       <i>WARNING</i>
       <div class="bold">Do not answer the questions now!</div>
       <div>
-        <audio src="assets/audio/listening.mp3" controls></audio>
+        <audio src="assets/audio/listening_{{config.userInfo.userLevel}}_{{testingService.testInfo.block}}.mp3"
+               controls></audio>
       </div>
       <ul>
         <li>Listen to the audio</li>
@@ -34,7 +35,7 @@
     }" class="question">
       <div class="question-header">
         <h3 class="question-title">{{idx + 1}}. {{ question.description }}</h3>
-        <div class="question-ball">2 Ball</div>
+        <div class="question-ball">{{20 / questions.length | number:'1.0-0'}} Ball</div>
       </div>
       <mat-radio-group [formControlName]="idx">
         <mat-radio-button

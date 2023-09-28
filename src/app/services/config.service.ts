@@ -2,6 +2,7 @@ import {ConfigsInterface, IServerConfig, IUserInfo} from "../interface/configs";
 import {Observable, take, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
+import {TestingService} from "../activities/testing/testing.service";
 
 @Injectable()
 export class ConfigService {
@@ -38,7 +39,13 @@ export class ConfigService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.accessToken}`
     });
-    return this.http.put<IServerConfig>(url, this.serverConfig, {headers}).pipe(take(1));
+    return this.http.put<IServerConfig>(url, this.serverConfig, {headers})
+      .pipe(
+        take(1),
+        tap((config) => {
+          this.serverConfig = config;
+        })
+      );
   }
 
   get userInfo(): IUserInfo {

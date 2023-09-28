@@ -1,5 +1,6 @@
-<main class="main blue lighten-5">
-  <form *ngIf="!isAuthorized" [formGroup]="studentInfo" (ngSubmit)="studentInfoSubmit($event)" class="main__container">
+<main [ngSwitch]="isAuthorized" class="main blue lighten-5">
+  <div class="switch"></div>
+  <form *ngSwitchCase="false" [formGroup]="studentInfo" (ngSubmit)="startDictionaryTesting($event)" class="main__container">
     <div class="main__img">
       <img class="responsive-img" src="assets/images/dictionary-section.png" alt="">
     </div>
@@ -51,6 +52,16 @@
     </div>
   </form>
 
-  <ng-container #questions>
-  </ng-container>
+  <app-question-card *ngSwitchCase="true" [cards]="questions"></app-question-card>
+  <mat-card *ngIf="isAuthorized" class="progress-card">
+    <mat-card-content>
+      <h2 class="example-h2">Time: {{expiredTime / 60000 | number:'1.0-0'}}m</h2>
+      <mat-progress-spinner
+              class="example-margin"
+              [color]="'primary'"
+              [mode]="'determinate'"
+              [value]="expiredTime / config.serverConfig.dictionaryExpired * 100">
+      </mat-progress-spinner>
+    </mat-card-content>
+  </mat-card>
 </main>

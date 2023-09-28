@@ -42,8 +42,8 @@ export class GrammarComponent implements OnInit {
   }
 
   private loadQuestions() {
-    const questions = this.service.formatArray(this.questions);
-    for (let i = 0; i < questions.length; i++) {
+    this.questions = this.service.formatArray(this.questions);
+    for (let i = 0; i < this.questions.length; i++) {
       this.questionArray.push(new FormControl('', Validators.required));
     }
   }

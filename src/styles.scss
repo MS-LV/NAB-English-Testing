@@ -52,7 +52,7 @@ $NAB-English-Testing-theme: mat.define-light-theme((
 }
 
 html, body {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   overflow: hidden;
 }
@@ -73,9 +73,6 @@ body {
   line-height: 1;
 }
 
-html, body {
-  height: 100vh;
-}
 
 body {
   margin: 0;
@@ -135,3 +132,10 @@ small {
   color: white;
 }
 
+.blue-text {
+  color: #2196F3;
+}
+
+.orange-text {
+  color: #ff9800;
+}

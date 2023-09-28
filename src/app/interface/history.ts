@@ -10,6 +10,7 @@ export interface HistoryResponse {
   score: number;
   createdAt: string;
   updatedAt: string;
+  isExpired: boolean
 }
 
 

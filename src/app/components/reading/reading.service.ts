@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {GrammarQS} from "../../interface/testing";
 import {ReadingQuestion} from "../../activities/testing/testing.interface";
 
 @Injectable({
@@ -30,6 +29,9 @@ export class ReadingService {
       if (sectionDiv.children.length > 0 && (question.text === '<br>' || i >= questions.length - 1)) {
         htmlDiv.append(sectionDiv);
         sectionDiv = document.createElement('div');
+        return;
+      }
+      if (question.text === '<br>') {
         return;
       }
       if (sectionDiv.childNodes.length <= 0) {

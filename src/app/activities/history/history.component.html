@@ -11,7 +11,7 @@ admin: config.userInfo.role === 'ADMIN'
       <div>group</div>
       <div>date</div>
     </div>
-    <div *ngFor="let history of historyData" [ngClass]="{exam: history.type.toLowerCase() === 'exam'}" class="tr"
+    <div *ngFor="let history of historyData" [ngClass]="{exam: history.type.toLowerCase() === 'exam', 'is-expired': history.isExpired}" class="tr"
          [routerLink]="[history._id]">
       <div>{{history.type}}</div>
       <div>{{history.block}}</div>

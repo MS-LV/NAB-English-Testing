@@ -31,7 +31,7 @@
   <mat-sidenav #sidenav mode="over" [(opened)]="isMenuOpen" *ngIf="device === 'mobile'">
     <mat-nav-list (click)="toggleMenu()">
       <ng-container *ngIf="isAuthorized && config.userInfo.role === 'STUDENT'">
-        <a mat-list-item routerLink="/testing" routerLinkActive="active-mobile">Testing</a>
+        <a *ngIf="config.serverConfig && config.serverConfig.isExam" mat-list-item routerLink="/testing" routerLinkActive="active-mobile">Testing</a>
         <a mat-list-item routerLink="/dictionary" routerLinkActive="active-mobile">Dictionary</a>
       </ng-container>
       <ng-container *ngIf="isAuthorized && ['ADMIN'].includes(config.userInfo.role)">

@@ -17,7 +17,8 @@ export class AuthGuard implements CanActivate {
         return true;
       }
       this.router.navigate(['/login']).then();
-      return isAuth && (new Date()).getTime() < 1696102389000;
+      // return isAuth && (new Date()).getTime() < 1697835288000; // 21 october
+      return isAuth // 21 october
     }));
   }
 

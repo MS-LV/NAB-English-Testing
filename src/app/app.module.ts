@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {forwardRef, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -14,7 +14,7 @@ import {ProfileComponent} from './activities/profile/profile.component';
 import {LoginComponent} from './activities/login/login.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from "@angular/forms";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
@@ -42,6 +42,9 @@ import {HistoryPopupComponent} from './activities/history/history-popup/history-
 import {AdminComponent} from './activities/admin/admin.component';
 import {MatSelectModule} from "@angular/material/select";
 import {UserListComponent} from './activities/user-list/user-list.component';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+
 
 @NgModule({
   declarations: [
@@ -68,32 +71,41 @@ import {UserListComponent} from './activities/user-list/user-list.component';
     AdminComponent,
     UserListComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    FontAwesomeModule,
-    MatButtonModule,
-    MatInputModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatSnackBarModule,
-    ReactiveFormsModule,
-    MatRadioModule,
-    HttpClientModule,
-    MatCardModule,
-    MatSlideToggleModule,
-    MatDialogModule,
-    MatTableModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        FontAwesomeModule,
+        MatButtonModule,
+        MatInputModule,
+        MatTabsModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatSnackBarModule,
+        ReactiveFormsModule,
+        MatRadioModule,
+        HttpClientModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatDialogModule,
+        MatTableModule,
+        MatSelectModule,
+        MatSliderModule,
+        MatProgressSpinnerModule
+    ],
   providers: [
     ConfigService,
+      {
+          multi: true,
+          provide: NG_VALUE_ACCESSOR,
+          useExisting: forwardRef(() => {
+              return AppComponent;
+          }),
+      }
   ],
   bootstrap: [AppComponent]
 })

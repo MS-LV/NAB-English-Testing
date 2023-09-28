@@ -71,3 +71,15 @@
     </form>
   </div>
 </div>
+
+<mat-card *ngIf="page" class="progress-card">
+  <mat-card-content>
+    <h2 class="example-h2">Time: {{expiredTime / 60000 | number: '1.0-0'}}m</h2>
+    <mat-progress-spinner
+            class="example-margin"
+            [color]="'primary'"
+            [mode]="'determinate'"
+            [value]="expiredTime / config.serverConfig.examExpired * 100">
+    </mat-progress-spinner>
+  </mat-card-content>
+</mat-card>

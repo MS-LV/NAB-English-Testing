@@ -42,7 +42,6 @@ export class LoginComponent {
   }
 
   submit(isLogin: boolean) {
-    console.log('submit')
     if (isLogin) {
       this.service.login(this.logInForm.value)
         .pipe(catchError((err: HttpErrorResponse) => {

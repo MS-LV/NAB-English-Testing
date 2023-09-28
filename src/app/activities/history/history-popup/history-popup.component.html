@@ -1,3 +1,7 @@
+<div *ngIf="currentHistory?.isExpired" class="stamp-expired">
+  <span>Time Expired!</span>
+</div>
+
 <div *ngIf="currentHistory" class="main__container">
   <h1 class="type">{{currentHistory.type}}</h1>
   <div class="test-info section">
@@ -32,10 +36,11 @@
       </ng-container>
     </div>
   </fieldset>
-
   <div class="score">
     <div class="page-title">Balls:</div>
     <div class="score-item">{{currentHistory.score | number : '1.0-2'}}</div>
   </div>
 </div>
+
+
 

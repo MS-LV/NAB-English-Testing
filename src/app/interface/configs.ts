@@ -26,4 +26,6 @@ export interface IUserInfo {
 export interface IServerConfig {
   _id?: string;
   isExam: boolean;
+  dictionaryExpired: number;
+  examExpired: number;
 }

@@ -99,4 +99,25 @@ mat-radio-group {
     margin: 10px 5px;
   }
 }
+mat-card-content {
+  padding: 10px !important;
+}
+.progress-card {
+  position: fixed;
+  top: 56px;
+  right: 0;
+  z-index: 3;
+}
+mat-progress-spinner {
+  width: 50px !important;
+  height: 50px !important;
+  margin: 0 auto !important;
+}
+.example-margin {
+  margin: 0 10px;
+}
+
+.example-card {
+  margin-bottom: 10px;
+}
 
